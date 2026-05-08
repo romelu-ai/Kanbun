@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -8,260 +7,233 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
-:root {
-–ink: #1a0800;
-–paper: #f7f0e0;
-–paper2: #ede3c8;
-–red: #b01218;
-–red2: #e02828;
-–gold: #c8922a;
-–blue: #1a3a6a;
-–shadow: rgba(26,8,0,0.22);
-}
-
-- { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
 body {
-font-family: ‘Noto Serif JP’, serif;
-background: var(–paper);
-color: var(–ink);
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-background-image: repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(180,155,90,0.11) 32px);
-overflow-x: hidden;
+  font-family: 'Noto Serif JP', serif;
+  background: #f0ece4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 header {
-width: 100%;
-background: var(–red);
-color: #fff;
-text-align: center;
-padding: 12px 12px 9px;
-box-shadow: 0 3px 14px var(–shadow);
+  width: 100%;
+  background: #c0201a;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px 11px;
 }
-header h1 { font-size: 1.2rem; font-weight: 900; letter-spacing: 0.3em; }
-header p { font-size: 0.7rem; opacity: 0.82; margin-top: 2px; font-family: ‘Noto Sans JP’, sans-serif; letter-spacing: 0.12em; }
+header h1 { font-size: 1.25rem; font-weight: 900; letter-spacing: 0.35em; }
+header p { font-size: 0.72rem; opacity: 0.85; margin-top: 3px; font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.18em; }
 
 .filter-wrap {
-width: 100%; max-width: 700px;
-padding: 10px 12px 0;
-display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+  width: 100%; max-width: 700px;
+  padding: 12px 14px 4px;
+  display: flex; flex-wrap: wrap; gap: 7px; justify-content: center;
 }
 .fbtn {
-font-family: ‘Noto Sans JP’, sans-serif;
-font-size: 0.72rem; padding: 4px 10px;
-border: 1.5px solid var(–red); border-radius: 20px;
-background: transparent; color: var(–red);
-cursor: pointer; transition: all 0.16s; white-space: nowrap;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.75rem; padding: 5px 13px;
+  border: 1.5px solid #c0201a; border-radius: 20px;
+  background: transparent; color: #c0201a;
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
 }
-.fbtn.on, .fbtn:hover { background: var(–red); color: #fff; }
+.fbtn.on { background: #c0201a; color: #fff; }
+.fbtn:hover:not(.on) { background: #fde8e8; }
 
 .stats {
-width: 100%; max-width: 700px;
-padding: 8px 14px 0;
-display: flex; align-items: center; gap: 8px;
-font-family: ‘Noto Sans JP’, sans-serif; font-size: 0.75rem; color: #7a5520;
+  width: 100%; max-width: 700px;
+  padding: 8px 16px 4px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Noto Sans JP', sans-serif; font-size: 0.74rem; color: #7a5520;
 }
-.pbar { flex: 1; height: 4px; background: var(–paper2); border-radius: 3px; overflow: hidden; }
-.pfill { height: 100%; background: var(–red); border-radius: 3px; transition: width 0.35s; }
+.pbar { flex: 1; height: 4px; background: #d8cdb0; border-radius: 3px; overflow: hidden; }
+.pfill { height: 100%; background: #c0201a; border-radius: 3px; transition: width 0.35s; }
 
-/* ===== CARD ===== */
 .scene {
-width: calc(100% - 28px); max-width: 660px;
-margin-top: 14px;
-perspective: 1100px;
+  width: calc(100% - 28px); max-width: 660px;
+  margin-top: 12px; perspective: 1100px;
 }
 .card-wrap {
-width: 100%; position: relative;
-transform-style: preserve-3d;
-transition: transform 0.5s cubic-bezier(.4,0,.2,1);
-cursor: pointer;
-min-height: 300px;
+  width: 100%; position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  cursor: pointer; min-height: 310px;
 }
 .card-wrap.flipped { transform: rotateY(180deg); }
 
 .face {
-width: 100%;
-backface-visibility: hidden;
--webkit-backface-visibility: hidden;
-border-radius: 8px;
-box-shadow: 3px 3px 0 rgba(180,140,40,0.2), 0 10px 32px var(–shadow);
-border: 2px solid var(–gold);
-padding: 22px 20px 18px;
-min-height: 300px;
-display: flex; flex-direction: column;
+  width: 100%;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.13);
+  border: 2px solid #c8922a;
+  padding: 18px 18px;
+  min-height: 310px; display: flex; flex-direction: column;
 }
-.front {
-background: #fff;
-align-items: center; justify-content: center;
-}
-.back {
-background: #fffbf2;
-position: absolute; top: 0; left: 0;
-transform: rotateY(180deg);
-justify-content: flex-start;
-}
+.front { background: #fff; align-items: center; justify-content: center; position: relative; }
+.back { background: #fffbf3; position: absolute; top: 0; left: 0; transform: rotateY(180deg); justify-content: flex-start; }
 
-/* FRONT */
 .f-badge {
-position: absolute; top: 10px; left: 13px;
-font-size: 0.68rem; font-family: ‘Noto Sans JP’, sans-serif;
-color: var(–red); font-weight: 700; letter-spacing: 0.1em;
-background: #fff6ee; border: 1px solid var(–gold); border-radius: 3px; padding: 1px 7px;
+  position: absolute; top: 12px; left: 14px;
+  font-size: 0.7rem; font-family: 'Noto Sans JP', sans-serif;
+  color: #c0201a; font-weight: 700; letter-spacing: 0.08em;
+  background: #fff; border: 1.5px solid #c0201a; border-radius: 5px; padding: 2px 8px;
 }
 .f-num {
-position: absolute; top: 10px; right: 13px;
-font-size: 0.68rem; font-family: ‘Noto Sans JP’, sans-serif; color: #9a7030;
+  position: absolute; top: 12px; right: 14px;
+  font-size: 0.7rem; font-family: 'Noto Sans JP', sans-serif; color: #9a7030;
 }
 .f-hakubun {
-font-size: 2rem; font-weight: 700;
-text-align: center; letter-spacing: 0.15em; line-height: 1.7;
-color: var(–ink); margin-top: 10px;
+  font-size: 2.1rem; font-weight: 700; text-align: center;
+  letter-spacing: 0.2em; line-height: 1.7; color: #1a0800;
 }
-.f-hint {
-margin-top: 20px; font-size: 0.68rem; color: #a08040;
-font-family: ‘Noto Sans JP’, sans-serif; letter-spacing: 0.08em;
-}
+.f-hint { margin-top: 22px; font-size: 0.7rem; color: #a08040; font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.06em; }
 
-/* BACK */
 .b-cat {
-font-size: 0.68rem; font-family: ‘Noto Sans JP’, sans-serif;
-color: var(–blue); font-weight: 700; letter-spacing: 0.1em;
-background: #eef3ff; border: 1px solid #88aadd; border-radius: 3px;
-padding: 1px 7px; align-self: flex-start; margin-bottom: 10px;
+  font-size: 0.7rem; font-family: 'Noto Sans JP', sans-serif;
+  color: #1a3a6a; font-weight: 700; letter-spacing: 0.1em;
+  background: #eef3ff; border: 1px solid #88aadd; border-radius: 3px;
+  padding: 2px 8px; align-self: flex-start; margin-bottom: 10px;
 }
-.b-haku {
-font-size: 1.35rem; font-weight: 700; color: var(–ink);
-letter-spacing: 0.12em; margin-bottom: 6px; line-height: 1.65;
-}
-.b-kana {
-font-size: 0.83rem; color: #5a4020; font-family: ‘Noto Sans JP’, sans-serif;
-margin-bottom: 8px; line-height: 1.65; font-style: italic;
-}
-.divider {
-width: 100%; height: 1px;
-background: linear-gradient(90deg, transparent, var(–gold), transparent);
-margin: 7px 0;
-}
-.b-imi {
-font-size: 0.9rem; color: var(–blue); font-family: ‘Noto Sans JP’, sans-serif;
-line-height: 1.7; font-weight: 500; margin-bottom: 8px;
-}
+.b-haku { font-size: 1.3rem; font-weight: 700; color: #1a0800; letter-spacing: 0.12em; margin-bottom: 5px; line-height: 1.65; }
+.b-kana { font-size: 0.82rem; color: #5a4020; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 7px; line-height: 1.65; font-style: italic; }
+.divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, #c8922a, transparent); margin: 6px 0; }
+.b-imi { font-size: 0.88rem; color: #1a3a6a; font-family: 'Noto Sans JP', sans-serif; line-height: 1.7; font-weight: 500; margin-bottom: 7px; }
 .b-koho-label {
-display: inline-block; background: var(–red); color: #fff;
-font-family: ‘Noto Sans JP’, sans-serif; font-size: 0.7rem; font-weight: 700;
-letter-spacing: 0.12em; padding: 2px 9px; border-radius: 3px; margin-bottom: 5px;
+  display: inline-block; background: #c0201a; color: #fff;
+  font-family: 'Noto Sans JP', sans-serif; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.1em; padding: 2px 9px; border-radius: 3px; margin-bottom: 5px;
 }
 .b-pat {
-font-size: 0.8rem; color: #5a3010; font-family: ‘Noto Sans JP’, sans-serif;
-background: #fff8ee; border-left: 3px solid var(–gold);
-padding: 5px 10px; border-radius: 0 3px 3px 0;
-line-height: 1.65; margin-bottom: 6px;
+  font-size: 0.78rem; color: #5a3010; font-family: 'Noto Sans JP', sans-serif;
+  background: #fff8ee; border-left: 3px solid #c8922a;
+  padding: 5px 10px; border-radius: 0 3px 3px 0; line-height: 1.65; margin-bottom: 6px;
 }
-.b-note {
-font-size: 0.73rem; color: #7a6040; font-family: ‘Noto Sans JP’, sans-serif;
-line-height: 1.6; font-style: italic;
-}
+.b-note { font-size: 0.7rem; color: #7a6040; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6; font-style: italic; }
 
-/* ===== OVERLAY (○×) ===== */
 .overlay {
-position: fixed; inset: 0;
-display: flex; align-items: center; justify-content: center;
-pointer-events: none;
-z-index: 100;
-opacity: 0;
-transition: opacity 0.25s ease;
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  pointer-events: none; z-index: 100; opacity: 0; transition: opacity 0.2s ease;
 }
 .overlay.show { opacity: 1; }
 .overlay-inner {
-font-size: 9rem; line-height: 1;
-text-shadow: 0 4px 24px rgba(0,0,0,0.3);
-transform: scale(0.6);
-transition: transform 0.2s cubic-bezier(.34,1.56,.64,1);
+  font-size: 10rem; line-height: 1; text-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  transform: scale(0.6); transition: transform 0.2s cubic-bezier(.34,1.56,.64,1);
 }
 .overlay.show .overlay-inner { transform: scale(1); }
 .overlay.ok .overlay-inner { color: #2a8a3a; }
 .overlay.ng .overlay-inner { color: #cc1a1a; }
 
-/* ===== BUTTONS ===== */
 .btn-row {
-width: calc(100% - 28px); max-width: 660px;
-display: flex; gap: 10px; margin-top: 12px;
+  width: calc(100% - 28px); max-width: 660px;
+  display: flex; gap: 10px; margin-top: 12px;
 }
 .jbtn {
-flex: 1; padding: 14px; border: none; border-radius: 6px;
-font-family: ‘Noto Serif JP’, serif; font-size: 1.05rem; font-weight: 700;
-cursor: pointer; letter-spacing: 0.15em; transition: all 0.14s;
-opacity: 0; pointer-events: none; transform: translateY(6px);
-transition: opacity 0.2s, transform 0.2s, background 0.1s, box-shadow 0.1s;
+  flex: 1; padding: 14px; border: none; border-radius: 7px;
+  font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.15em;
+  opacity: 0; pointer-events: none; transform: translateY(5px);
+  transition: opacity 0.2s, transform 0.2s;
 }
 .jbtn.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .jok { background: #1a6a2a; color: #fff; box-shadow: 0 3px 0 #0f4018; }
 .jok:active { transform: translateY(3px); box-shadow: none; }
-.jng { background: var(–red); color: #fff; box-shadow: 0 3px 0 #700a0a; }
+.jng { background: #c0201a; color: #fff; box-shadow: 0 3px 0 #700a0a; }
 .jng:active { transform: translateY(3px); box-shadow: none; }
 
 .nav-row {
-width: calc(100% - 28px); max-width: 660px;
-display: flex; align-items: center; justify-content: space-between;
-margin-top: 10px; gap: 10px;
+  width: calc(100% - 28px); max-width: 660px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 10px; gap: 10px; padding-bottom: 24px;
 }
 .nbtn {
-padding: 9px 18px; border: 1.5px solid var(–ink); background: transparent;
-font-family: ‘Noto Sans JP’, sans-serif; font-size: 0.82rem;
-cursor: pointer; border-radius: 5px; color: var(–ink); transition: all 0.14s;
+  padding: 11px 22px; border: 1.5px solid #1a0800; background: #fff;
+  font-family: 'Noto Sans JP', sans-serif; font-size: 0.84rem;
+  cursor: pointer; border-radius: 7px; color: #1a0800; transition: all 0.14s; font-weight: 500;
 }
-.nbtn:hover { background: var(–ink); color: var(–paper); }
-.nbtn:disabled { opacity: 0.28; cursor: default; background: transparent; color: var(–ink); }
+.nbtn:hover { background: #1a0800; color: #fff; }
+.nbtn:disabled { opacity: 0.3; cursor: default; background: #fff; color: #1a0800; }
 .shbtn {
-padding: 9px 13px; border: 1.5px solid var(–gold); background: transparent;
-font-family: ‘Noto Sans JP’, sans-serif; font-size: 0.77rem;
-cursor: pointer; border-radius: 5px; color: #7a5510; transition: all 0.14s;
+  padding: 11px 20px; border: 1.5px solid #c8922a; background: #fff;
+  font-family: 'Noto Sans JP', sans-serif; font-size: 0.8rem;
+  cursor: pointer; border-radius: 7px; color: #7a5510; transition: all 0.14s;
 }
-.shbtn:hover { background: var(–gold); color: #fff; }
+.shbtn:hover { background: #c8922a; color: #fff; }
 
-/* ===== RESULT ===== */
 .result {
-display: none;
-width: calc(100% - 28px); max-width: 660px;
-background: #fff; border: 2px solid var(–gold); border-radius: 8px;
-box-shadow: 3px 3px 0 rgba(180,140,40,0.2), 0 10px 30px var(–shadow);
-padding: 28px 20px; text-align: center; margin-top: 14px;
+  display: none; width: calc(100% - 28px); max-width: 660px;
+  background: #fff; border: 2px solid #c8922a; border-radius: 10px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.12);
+  padding: 28px 20px; text-align: center; margin-top: 14px;
 }
 .result.show { display: block; }
-.r-score { font-size: 3.2rem; font-weight: 900; color: var(–red); }
-.r-msg { font-size: 0.95rem; color: #6a4420; font-family: ‘Noto Sans JP’, sans-serif; margin: 6px 0 20px; }
-.rbtn {
-padding: 12px 34px; background: var(–red); color: #fff; border: none;
-border-radius: 5px; font-family: ‘Noto Serif JP’, serif; font-size: 1rem;
-font-weight: 700; cursor: pointer; letter-spacing: 0.15em;
-}
-.wrong-hd {
-font-size: 0.82rem; font-family: ‘Noto Sans JP’, sans-serif;
-color: var(–red); font-weight: 700; border-bottom: 1px solid var(–gold);
-padding-bottom: 4px; margin: 18px 0 8px; text-align: left;
-}
-.wrong-item {
-font-size: 0.78rem; font-family: ‘Noto Sans JP’, sans-serif;
-padding: 5px 0; border-bottom: 1px dotted #d0b060; color: var(–ink);
-text-align: left; line-height: 1.6;
-}
-.wrong-item em { color: var(–red); font-style: normal; font-weight: 700; }
+.r-score { font-size: 3.2rem; font-weight: 900; color: #c0201a; }
+.r-msg { font-size: 0.95rem; color: #6a4420; font-family: 'Noto Sans JP', sans-serif; margin: 6px 0 20px; }
+.rbtn { padding: 12px 34px; background: #c0201a; color: #fff; border: none; border-radius: 6px; font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; cursor: pointer; letter-spacing: 0.15em; }
+.wrong-hd { font-size: 0.82rem; font-family: 'Noto Sans JP', sans-serif; color: #c0201a; font-weight: 700; border-bottom: 1px solid #c8922a; padding-bottom: 4px; margin: 18px 0 8px; text-align: left; }
+.wrong-item { font-size: 0.78rem; font-family: 'Noto Sans JP', sans-serif; padding: 5px 0; border-bottom: 1px dotted #d0b060; color: #1a0800; text-align: left; line-height: 1.6; }
+.wrong-item em { color: #c0201a; font-style: normal; font-weight: 700; }
 
-div[style*=“height:24px”] { height: 24px; }
+.mode-wrap {
+  width: 100%; max-width: 700px;
+  padding: 8px 14px 4px;
+}
+.mode-label {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.68rem; color: #9a7030; font-weight: 700;
+  letter-spacing: 0.12em; margin-bottom: 5px;
+}
+.mode-btns {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.mbtn {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.72rem; padding: 5px 12px;
+  border: 1.5px solid #1a3a6a; border-radius: 5px;
+  background: transparent; color: #1a3a6a;
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+}
+.mbtn.on { background: #1a3a6a; color: #fff; }
+.mbtn:hover:not(.on) { background: #eef3ff; }
+.mbtn-weak { border-color: #c8922a; color: #7a5510; }
+.mbtn-weak.on { background: #c8922a; color: #fff; border-color: #c8922a; }
+.mbtn-weak:hover:not(.on) { background: #fff8ee; }
+
+
+.f-weak-badge {
+  position: absolute; bottom: 12px; right: 14px;
+  font-size: 0.65rem; font-family: 'Noto Sans JP', sans-serif;
+  color: #7a5510; font-weight: 700;
+  background: #fff8ee; border: 1.5px solid #c8922a; border-radius: 4px;
+  padding: 2px 7px;
+}
+
 </style>
-
 </head>
 <body>
 
 <header>
-  <h1>漢文句形 一問一答</h1>
+  <h1>漢文句形　一問一答</h1>
   <p>表：白文　／　裏：読み・意味・句法</p>
 </header>
 
 <div class="filter-wrap" id="filterWrap"></div>
+
+<!-- モード選択 -->
+<div class="mode-wrap">
+  <div class="mode-label">出題モード</div>
+  <div class="mode-btns">
+    <button class="mbtn on" id="mAll" onclick="setMode('all',this)">全問</button>
+    <button class="mbtn" id="m10"  onclick="setMode(10,this)">ランダム10問</button>
+    <button class="mbtn" id="m20"  onclick="setMode(20,this)">ランダム20問</button>
+    <button class="mbtn" id="m30"  onclick="setMode(30,this)">ランダム30問</button>
+    <button class="mbtn mbtn-weak" id="mWeak" onclick="setMode('weak',this)">苦手のみ <span id="weakCount"></span></button>
+  </div>
+</div>
 
 <div class="stats">
   <span id="sTxt">0 / 0</span>
@@ -269,11 +241,12 @@ div[style*=“height:24px”] { height: 24px; }
   <span id="okTxt">正解: 0</span>
 </div>
 
-<div class="scene" id="scene">
+<div class="scene">
   <div class="card-wrap" id="cardWrap" onclick="flipCard()">
     <div class="face front">
       <div class="f-badge" id="fCat">—</div>
       <div class="f-num" id="fNum">1 / 1</div>
+      <div class="f-weak-badge" id="fWeakBadge" style="display:none">⚠ 苦手</div>
       <div class="f-hakubun" id="fHaku"></div>
       <div class="f-hint">タップして裏面を確認</div>
     </div>
@@ -290,15 +263,13 @@ div[style*=“height:24px”] { height: 24px; }
   </div>
 </div>
 
-<!-- ○×オーバーレイ -->
-
 <div class="overlay" id="overlay">
   <div class="overlay-inner" id="overlayChar"></div>
 </div>
 
 <div class="btn-row">
-  <button class="jbtn jng" id="jng" onclick="judge(false)">✗ 不正解</button>
-  <button class="jbtn jok" id="jok" onclick="judge(true)">○ 正解</button>
+  <button class="jbtn jng" id="jng" onclick="judge(false)">✗　不正解</button>
+  <button class="jbtn jok" id="jok" onclick="judge(true)">○　正解</button>
 </div>
 
 <div class="nav-row">
@@ -314,578 +285,1203 @@ div[style*=“height:24px”] { height: 24px; }
   <div id="wrongArea"></div>
 </div>
 
-<div style="height:28px"></div>
-
 <script>
 // ============================================================
-//  全データ（画像4枚完全網羅）
-//  haku=白文, kana=書き下し文, imi=現代語訳, koho=句法名, pat=句形パターン, note=補足
+//  全データ（句形マスターシート 4枚完全網羅）
 // ============================================================
 const ALL = [
 
-  /* ══════════ 再読文字 (p.20-21) ══════════ */
-  { cat:"再読文字", haku:"未嘗聞。",
-    kana:"いまだかつてきかず。",
-    imi:"まだ一度も聞いたことがない。",
+  /* ══════════ 再読文字（p.20-21）══════════ */
+  {
+    cat:"再読文字",
+    haku:"未嘗聞好学者也。",
+    kana:"いまだかつて学を好む者を聞かず。",
+    imi:"まだ一度も学問を好む者を聞いたことがない。",
     koho:"再読文字「未」",
     pat:"未だ〜ず ＝ まだ〜していない",
-    note:"「未」は副詞として「いまだ」と読み、否定の「ず」を伴う。" },
-
-  { cat:"再読文字", haku:"将順且至楚下。",
+    note:"「未」はまず「いまだ」と読み、文末で「ず」と再び読む。"
+  },
+  {
+    cat:"再読文字",
+    haku:"将順且至楚下。",
     kana:"まさに楚の下に至らんとす。",
     imi:"今にも楚の下に至ろうとしている。",
     koho:"再読文字「将」",
     pat:"将に〜んとす ＝ 今にも〜しようとしている",
-    note:"「将」は直近の未来を示す。" },
-
-  { cat:"再読文字", haku:"高祖且勉学。",
-    kana:"こうそかつまたまなびをつとめよ。",
-    imi:"高祖よ、そのうえまた学問に励め。",
-    koho:"再読文字「且」",
-    pat:"且つ〜 ＝ そのうえ〜・また〜",
-    note:"「且」は累加（さらに）の意を加える再読文字。" },
-
-  { cat:"再読文字", haku:"宜従兄之言。",
-    kana:"よろしくけいのげんにしたがうべし。",
+    note:"「将」はまず「まさに」と読み、文末で「〜んとす」と再び読む。"
+  },
+  {
+    cat:"再読文字",
+    haku:"高祖順江東下。",
+    kana:"こうそ、まさに江東に順ひて下るべし。",
+    imi:"高祖よ、今にも江東に沿って下るべきだ。",
+    koho:"再読文字「将／応」",
+    pat:"将に／応に〜べし ＝ 今にも〜すべきだ",
+    note:"「将」「応」はともに近い未来や当然を示す再読文字。"
+  },
+  {
+    cat:"再読文字",
+    haku:"及時当勉励。",
+    kana:"時に及んで、まさに勉励すべし。",
+    imi:"時機を逃さず、まさに励むべきだ。",
+    koho:"再読文字「当」",
+    pat:"当に〜べし ＝ まさに〜すべきだ",
+    note:"「当」はまず「まさに」と読み、文末で「べし」と再び読む。"
+  },
+  {
+    cat:"再読文字",
+    haku:"宜従兄之言。",
+    kana:"よろしく兄の言に従うべし。",
     imi:"兄の言葉に従うのがよい。",
     koho:"再読文字「宜」",
     pat:"宜しく〜べし ＝ 〜するのがよい",
-    note:"「宜」は適切な行為を勧める。" },
-
-  { cat:"再読文字", haku:"行楽須及春。",
-    kana:"こうらくはすべからくはるにおよぶべし。",
+    note:"「宜」はまず「よろしく」と読み、文末で「べし」と再び読む。"
+  },
+  {
+    cat:"再読文字",
+    haku:"行楽須及春。",
+    kana:"行楽は、須らく春に及ぶべし。",
     imi:"行楽はぜひ春のうちにすべきである。",
     koho:"再読文字「須」",
-    pat:"須く〜べし ＝ ぜひとも〜すべきだ",
-    note:"「須」は義務・当然を強調する。" },
-
-  { cat:"再読文字", haku:"過猶不及。",
-    kana:"すぎたるはなおおよばざるがごとし。",
+    pat:"須らく〜べし ＝ ぜひとも〜すべきだ",
+    note:"「須」はまず「すべからく」と読み、文末で「べし」と再び読む。"
+  },
+  {
+    cat:"再読文字",
+    haku:"過猶不及。",
+    kana:"過ぎたるは、猶ほ及ばざるがごとし。",
     imi:"やり過ぎは、なお及ばないのと同じことだ。",
     koho:"再読文字「猶」",
     pat:"猶ほ〜がごとし ＝ ちょうど〜のようだ",
-    note:"「猶」は再読文字で比況（たとえ）を表す。論語より。" },
+    note:"「猶」は再読文字として「なほ」と読み、比況「〜のごとし」と呼応する。論語より。"
+  },
+  {
+    cat:"再読文字",
+    haku:"盍各言爾志。",
+    kana:"盍ぞ各おのおのの爾の志を言わざる。",
+    imi:"なぜそれぞれ自分の志を言わないのか。",
+    koho:"再読文字「盍」",
+    pat:"盍ぞ〜ざる ＝ なぜ〜しないのか（勧誘）",
+    note:"「盍」＝「何不」の合字。まず「なんぞ」と読み、文末で「〜ざる」と再び読む。"
+  },
 
-  { cat:"再読文字", haku:"応知此。",
-    kana:"まさにこれをしるべし。",
-    imi:"まさにこれを知るべきである。",
-    koho:"再読文字「応」",
-    pat:"応に〜べし ＝ 当然〜すべきだ",
-    note:"「応」は当然・義務を表す再読文字。" },
-
-  /* ══════════ 否定形 (p.32-41) ══════════ */
-  { cat:"否定形", haku:"情人非木石。",
-    kana:"じょうじんはぼくせきにあらず。",
+  /* ══════════ 否定形 ══════════ */
+  {
+    cat:"否定形",
+    haku:"歳月不待人。",
+    kana:"歳月は人を待たず。",
+    imi:"歳月は人を待たない。",
+    koho:"否定形「不〜」",
+    pat:"不〜（〜ず） ＝ 〜しない",
+    note:"「不」は動詞・形容詞の前に置く最も基本的な否定字。"
+  },
+  {
+    cat:"否定形",
+    haku:"情人非木石。",
+    kana:"情人は木石にあらず。",
     imi:"情のある人は木や石ではない。",
     koho:"否定形「非〜」",
     pat:"非〜（あらず） ＝ 〜ではない（名詞の否定）",
-    note:"「非」は名詞・形容詞を否定する。動詞の否定には「不」を使う。" },
-
-  { cat:"否定形", haku:"歳月不待人。",
-    kana:"さいげつはひとをまたず。",
-    imi:"歳月は人を待たない。",
-    koho:"否定形「不〜」",
-    pat:"不〜（〜ず） ＝ 〜しない（動詞・形容詞の否定）",
-    note:"「不」は最も基本的な否定字。" },
-
-  { cat:"否定形", haku:"己所不欲、勿施於人。",
-    kana:"おのれのほっせざるところ、ひとにほどこすことなかれ。",
-    imi:"自分が望まないことを、他人に施してはならない。",
-    koho:"否定形「勿〜」（禁止）",
-    pat:"勿〜（なかれ） ＝ 〜してはならない",
-    note:"「勿・莫・毋・無」はすべて禁止を表す。論語の黄金律。" },
-
-  { cat:"否定形", haku:"有備無患。",
-    kana:"そなえあればうれいなし。",
+    note:"「非」は名詞・形容詞を否定する。動詞の否定には「不」を使う。"
+  },
+  {
+    cat:"否定形",
+    haku:"有備無患。",
+    kana:"備えあれば患い無し。",
     imi:"備えがあれば心配がない。",
     koho:"否定形「無〜」",
     pat:"無〜（なし） ＝ 〜がない",
-    note:"「無」は存在否定と禁止の両義を持つ。" },
-
-  { cat:"否定形", haku:"存亡不可知。",
-    kana:"そんぼうしるべからず。",
+    note:"「無」は存在否定。禁止の「無（なかれ）」とは区別する。"
+  },
+  {
+    cat:"否定形",
+    haku:"己所不欲、勿施於人。",
+    kana:"己の欲せざる所、人に施すこと勿かれ。",
+    imi:"自分が望まないことを、他人に施してはならない。",
+    koho:"否定形「勿〜」（禁止）",
+    pat:"勿〜（なかれ） ＝ 〜してはならない",
+    note:"「勿・莫・毋・無」はすべて禁止を表す助字。論語の黄金律。"
+  },
+  {
+    cat:"否定形",
+    haku:"存亡不可知。",
+    kana:"存亡は知るべからず。",
     imi:"生死は知ることができない。",
     koho:"否定形「不可〜」",
     pat:"不可〜（〜すべからず） ＝ 〜できない／〜してはならない",
-    note:"「不可」は不可能と禁止の両義がある。" },
+    note:"「不可」は不可能と禁止の両義がある。"
+  },
+  {
+    cat:"否定形",
+    haku:"情人有備非木石皆有情。",
+    kana:"情人は木石にあらず、皆情有り。",
+    imi:"情のある人は木石ではなく、みな情がある。",
+    koho:"否定形「非〜」の応用",
+    pat:"非〜（あらず）＝〜ではない　＋　皆〜（みな〜）",
+    note:"歳月不待人・有備無患と並ぶ否定形の代表例。"
+  },
 
-  { cat:"否定形", haku:"盍各言爾志。",
-    kana:"なんぞおのおのなんじのこころざしをいわざるか。",
-    imi:"なぜそれぞれ自分の志を言わないのか。",
-    koho:"否定形「盍〜」（反語的禁止）",
-    pat:"盍ぞ〜ざるか ＝ なぜ〜しないのか（〜したらどうか）",
-    note:"「盍」＝「何不」の合字。やんわりした勧め。" },
-
-  /* ══════════ 疑問形 (p.44-51) ══════════ */
-  { cat:"疑問形", haku:"此何人也。",
-    kana:"これはいかなるひとか。",
+  /* ══════════ 疑問形 ══════════ */
+  {
+    cat:"疑問形",
+    haku:"莫不料死、不能料生、不能料。",
+    kana:"死を料ること能わず、生を料ること能わず。",
+    imi:"死を計ることができず、生を計ることもできない。",
+    koho:"疑問形「不能〜」",
+    pat:"能（よ）く〜ず ＝ 〜することができない",
+    note:"「不能・不可・未能」はいずれも不可能を表す。"
+  },
+  {
+    cat:"疑問形",
+    haku:"此何人也。",
+    kana:"これは何人ぞや。",
     imi:"これはどういう人物なのか。",
     koho:"疑問形「何〜也」",
     pat:"何〜也（なに〜や） ＝ どのような〜か",
-    note:"「也」で文末を結ぶ基本疑問形。" },
-
-  { cat:"疑問形", haku:"相煎何太急。",
-    kana:"あいせんすること、なんぞはなはだきゅうなる。",
-    imi:"どうしてそんなに激しく煮立てるのか。",
-    koho:"疑問形「何〜」",
-    pat:"何ぞ〜（なんぞ〜） ＝ どうして〜なのか",
-    note:"曹植「七歩の詩」。骨肉相食む悲劇を詠む。" },
-
-  { cat:"疑問形", haku:"今蛇安在。",
-    kana:"いまへびはいずくにかある。",
+    note:"「也」で文末を結ぶ基本疑問形。"
+  },
+  {
+    cat:"疑問形",
+    haku:"今蛇安在。",
+    kana:"今、蛇は安くにかある。",
     imi:"今あの蛇はいったいどこにいるのか。",
     koho:"疑問形「安〜」",
     pat:"安んぞ〜（いずくんぞ〜） ＝ どこに・どうして〜か",
-    note:"「安」は場所・理由を問う疑問副詞。" },
-
-  { cat:"疑問形", haku:"創業守成孰難。",
-    kana:"そうぎょうとしゅせいといずれかかたき。",
+    note:"「安」は場所・理由を問う疑問副詞。"
+  },
+  {
+    cat:"疑問形",
+    haku:"相煎何太急。",
+    kana:"相煎ること、何ぞはなはだ急なる。",
+    imi:"どうしてそんなに激しく煮立てるのか。",
+    koho:"疑問形「何〜」",
+    pat:"何ぞ〜（なんぞ〜） ＝ どうして〜なのか",
+    note:"曹植「七歩の詩」より。骨肉相食む悲劇を詠む。"
+  },
+  {
+    cat:"疑問形",
+    haku:"創業守成孰難。",
+    kana:"創業と守成といずれか難き。",
     imi:"創業と守成とどちらが難しいか。",
     koho:"疑問形「孰〜」",
     pat:"孰れか〜（いずれか〜） ＝ どちらが〜か",
-    note:"「孰」は二者を比べる疑問詞。" },
-
-  { cat:"疑問形", haku:"為之奈何。",
-    kana:"これをいかんせん。",
+    note:"「孰」は二者を比べる疑問詞。"
+  },
+  {
+    cat:"疑問形",
+    haku:"為之奈何。",
+    kana:"これを奈何せん。",
     imi:"これをどうしたらよいか。",
     koho:"疑問形「奈何・如何・若何」",
     pat:"奈何（いかん） ＝ どうする・どうして",
-    note:"「奈何・如何・若何」はいずれも「どうする」の疑問。" },
-
-  { cat:"疑問形", haku:"子何為者也。",
-    kana:"しはなんとするものか。",
-    imi:"あなたは何をする人なのか。",
-    koho:"疑問形「何為〜也」",
-    pat:"何為〜（なんすれぞ〜） ＝ なぜ〜するのか",
-    note:"「何為」は理由を問う。" },
-
-  { cat:"疑問形", haku:"無夕不飲。",
-    kana:"ゆうべとしてのまざるなし。",
-    imi:"夕べとして飲まない夜はない。",
-    koho:"疑問形（二重否定）「無〜不〜」",
-    pat:"無〜不〜（〜として〜ざるなし） ＝ すべて〜する",
-    note:"二重否定で全面的肯定を表す。" },
-
-  { cat:"疑問形", haku:"吾矛之利、物無不陥也。",
-    kana:"わがほこのとがりは、ものとしておとさざるなし。",
-    imi:"私の矛の鋭さは、どんなものも突き通せないものはない。",
-    koho:"疑問形「無不〜」",
-    pat:"物無不〜（ものとして〜ざるなし） ＝ どんなものも〜する",
-    note:"「矛盾」の故事より。" },
-
-  { cat:"疑問形", haku:"勇者不必有仁。",
-    kana:"ゆうしゃはかならずしもじんあらず。",
+    note:"「奈何・如何・若何」はいずれも「どうする」の疑問。"
+  },
+  {
+    cat:"疑問形",
+    haku:"黄鶴一去不復返。",
+    kana:"黄鶴、ひとたび去りて又返らず。",
+    imi:"黄鶴はひとたび去ってもう戻らない。",
+    koho:"疑問形「不復〜」",
+    pat:"不復〜（また〜ず） ＝ 二度と〜しない",
+    note:"崔顥「黄鶴楼」より。"
+  },
+  {
+    cat:"疑問形",
+    haku:"勇者不必有仁。",
+    kana:"勇者は必ずしも仁あらず。",
     imi:"勇者は必ずしも仁徳があるとは限らない。",
     koho:"疑問形「不必〜」（部分否定）",
     pat:"必ずしも〜ず ＝ 必ずしも〜とは限らない",
-    note:"全否定「全く〜ず」との区別が重要。" },
+    note:"全否定「全く〜ず」との区別が重要。「不必・不常・不倶・不尽」が部分否定。"
+  },
+  {
+    cat:"疑問形",
+    haku:"伯楽一過、千里馬常有。",
+    kana:"千里の馬は常に有り、伯楽は常には有らず。",
+    imi:"千里の馬は常にいるが、伯楽は常にはいない。",
+    koho:"疑問形「常有・不常有」",
+    pat:"常に有り／常には有らず ＝ 常にいる／常にはいない",
+    note:"韓愈「雑説」より。名馬はいても名伯楽はなかなかいない、という有名な逆説。"
+  },
+  {
+    cat:"疑問形",
+    haku:"無夕不飲。",
+    kana:"夕として飲まざるなし。",
+    imi:"夕べとして飲まない夜はない。",
+    koho:"疑問形（二重否定）「無〜不〜」",
+    pat:"無〜不〜（〜として〜ざるなし） ＝ すべて〜する",
+    note:"二重否定で全面的肯定を表す。"
+  },
+  {
+    cat:"疑問形",
+    haku:"吾矛之利、物無不陥也。",
+    kana:"わが矛の利、物として陥さざるなし。",
+    imi:"私の矛の鋭さは、どんなものも突き通せないものはない。",
+    koho:"疑問形「無不〜」",
+    pat:"物無不〜（ものとして〜ざるなし） ＝ どんなものも〜する",
+    note:"韓非子「矛盾」の故事より。"
+  },
+  {
+    cat:"疑問形",
+    haku:"奮不敢動。",
+    kana:"奮いて、敢えて動かず。",
+    imi:"奮い立って、あえて動かない。",
+    koho:"疑問形「不敢〜」",
+    pat:"敢えて〜ず ＝ あえて〜しない（しようとしない）",
+    note:"「不敢」は強い意志で〜しないことを示す否定。"
+  },
 
-  { cat:"疑問形", haku:"千里馬常有。",
-    kana:"せんりのうまはつねにあり。",
-    imi:"千里の馬は常にいる。",
-    koho:"疑問形「常有」",
-    pat:"常に有り ＝ 常にある（いる）",
-    note:"韓愈「雑説」より。伯楽と千里の馬の有名な話。" },
-
-  { cat:"疑問形", haku:"黄鶴一去不復返。",
-    kana:"こうかくひとたびさりてまたかえらず。",
-    imi:"黄鶴はひとたび去ってもう戻らない。",
-    koho:"疑問形「不復〜」",
-    pat:"不復〜（またず〜） ＝ 二度と〜しない",
-    note:"崔顥「黄鶴楼」より。" },
-
-  /* ══════════ 反語形 (p.52-57) ══════════ */
-  { cat:"反語形", haku:"豈有此理乎。",
-    kana:"あにこのことわりあらんや。",
+  /* ══════════ 反語形 ══════════ */
+  {
+    cat:"反語形",
+    haku:"豈有此理乎。",
+    kana:"豈にこの理あらんや。",
     imi:"どうしてこのような道理があろうか（いや、ない）。",
     koho:"反語形「豈〜乎（哉）」",
     pat:"豈に〜んや ＝ どうして〜であろうか（いや〜でない）",
-    note:"「豈」は強い否定的反語副詞。" },
-
-  { cat:"反語形", haku:"夫何憂何懼。",
-    kana:"それなにをかうれい、なにをかおそれん。",
+    note:"「豈」は強い否定的反語副詞。"
+  },
+  {
+    cat:"反語形",
+    haku:"夫何憂何懼。",
+    kana:"それ、何をか憂え、何をか懼れん。",
     imi:"いったい何を心配し、何を恐れることがあろうか。",
     koho:"反語形「何〜乎」",
     pat:"何をか〜んや ＝ 何を〜しようか（いや、しない）",
-    note:"「夫」は発語の助字。" },
-
-  { cat:"反語形", haku:"不雅懐何佳作、何伸。",
-    kana:"みやびやかでないのに、どうして佳作を作れようか。",
-    imi:"風雅でなければ、どうして佳作を作り、どうして志を伸ばせようか。",
-    koho:"反語形「何〜」",
-    pat:"何ぞ〜（なんぞ〜） ＝ どうして〜できようか（いや、できない）",
-    note:"「何」を使った反語の基本形。" },
-
-  { cat:"反語形", haku:"朝三暮四、足乎。",
-    kana:"ちょうさんぼし、たらんか。",
+    note:"「夫」は発語の助字。「懼」は恐れる意。"
+  },
+  {
+    cat:"反語形",
+    haku:"朝三暮四、足乎。",
+    kana:"朝三暮四、足らんか。",
     imi:"朝三暮四で、十分であろうか（いや、十分でない）。",
     koho:"反語形「〜乎」",
     pat:"〜んか（〜乎） ＝ 〜であろうか（反語）",
-    note:"「乎・哉・耶・邪」は疑問・反語の終助詞。" },
-
-  { cat:"反語形", haku:"为之奈何。子何以陥子之盾。",
-    kana:"これをいかんせん。しはなにをもってかしのたてをおとさんや。",
+    note:"「乎・哉・耶・邪」は疑問・反語の終助詞として使われる。"
+  },
+  {
+    cat:"反語形",
+    haku:"為之奈何。子何以陥子之盾。",
+    kana:"これを奈何せん。子は何を以ってか子の盾を陥さんや。",
     imi:"これをどうしようか。あなたは何によってあなたの盾を突き通すのか。",
     koho:"反語形「何以〜」",
     pat:"何を以てか〜んや ＝ 何によって〜できようか",
-    note:"「以」は手段を問う。" },
-
-  { cat:"反語形", haku:"王何以利吾。",
-    kana:"おうはなにをもってかわれをりせんや。",
-    imi:"王は何によって私を利するのか（利することなどできない）。",
+    note:"「以」は手段を問う。矛盾の故事より。"
+  },
+  {
+    cat:"反語形",
+    haku:"王何以利吾国。",
+    kana:"王は何を以ってか吾が国を利せんや。",
+    imi:"王は何によって私の国を利するのか（利することなどできない）。",
     koho:"反語形「何以〜」",
     pat:"何を以てか〜んや ＝ 何によって〜できようか",
-    note:"孟子の冒頭より。仁義優先を説く。" },
+    note:"孟子の冒頭より。仁義優先を説く。"
+  },
+  {
+    cat:"反語形",
+    haku:"国以何守。",
+    kana:"国は何を以て守るや。",
+    imi:"国は何によって守るのか。",
+    koho:"反語形「以何〜」",
+    pat:"何を以て〜や ＝ 何によって〜するのか",
+    note:"「以」の位置が前後で意味は同じ。疑問・反語両義あり。"
+  },
+  {
+    cat:"反語形",
+    haku:"雅不懐何佳作、何伸。",
+    kana:"雅ならずして、何ぞ佳作を懐かんや、何ぞ伸びんや。",
+    imi:"風雅でなければ、どうして佳作を作り、どうして志を伸ばせようか。",
+    koho:"反語形「何〜」（重複）",
+    pat:"何ぞ〜（なんぞ〜）んや ＝ どうして〜できようか（いや、できない）",
+    note:"「何」を使った反語の応用形。"
+  },
+  {
+    cat:"反語形",
+    haku:"燕雀安知鴻鵠之志哉。",
+    kana:"燕雀、安くんぞ鴻鵠の志を知らんや。",
+    imi:"燕や雀のような小さな鳥に、鴻や鵠のような大きな鳥の志がわかろうか（いや、わからない）。",
+    koho:"反語形「安〜哉」",
+    pat:"安んぞ〜をしらんや ＝ どうして〜を知ることができようか",
+    note:"史記「陳渉世家」より。大志を持つ英雄の比喩として有名。"
+  },
+  {
+    cat:"反語形",
+    haku:"我安適帰矣。",
+    kana:"我は安くにか帰らんや。",
+    imi:"私はどこに帰ることができようか（帰る場所がない）。",
+    koho:"反語形「安〜矣」",
+    pat:"安くにか〜んや ＝ どこに〜できようか",
+    note:"「矣」は断定・詠嘆の終助詞。"
+  },
+  {
+    cat:"反語形",
+    haku:"夫我志適王敵、誰与王敵。",
+    kana:"それ、我の志は王に敵するに適す、誰か王と敵せん。",
+    imi:"私の志は王に対抗することに向いている。誰が王と対抗できようか。",
+    koho:"反語形「誰〜乎」",
+    pat:"誰か〜（だれか〜） ＝ 誰が〜できようか（反語）",
+    note:"「誰」を使った反語形。"
+  },
 
-  /* ══════════ 比較形 (p.78-79) ══════════ */
-  { cat:"比較形", haku:"霜葉紅於二月花。",
-    kana:"そうようはにがつのはなよりもくれないなり。",
+  /* ══════════ 比較形 ══════════ */
+  {
+    cat:"比較形",
+    haku:"霜葉紅於二月花。",
+    kana:"霜葉は二月の花よりも紅なり。",
     imi:"霜の葉は二月の花よりも赤い。",
     koho:"比較形「A於B」",
-    pat:"AはBより〜（AはBよりも〜である）",
-    note:"「於」は比較の基準を示す。杜牧「山行」の名句。" },
-
-  { cat:"比較形", haku:"百聞不如一見。",
-    kana:"ひゃくぶんはいっけんにしかず。",
+    pat:"AはBより〜 ＝ AはBよりも〜である",
+    note:"「於」は比較の基準を示す。杜牧「山行」の名句。"
+  },
+  {
+    cat:"比較形",
+    haku:"百聞不如一見。",
+    kana:"百聞は一見に如かず。",
     imi:"百回聞くことは、一度見ることに及ばない。",
     koho:"比較形「不如（若）〜」",
     pat:"A不如B ＝ AはBに及ばない・BのほうがAよりよい",
-    note:"「不如・不若・莫如・莫若」はいずれも「〜にしかず」と読む。" },
+    note:"「不如・不若・莫如・莫若」はいずれも「〜にしかず」と読む。"
+  },
 
-  { cat:"比較形", haku:"此妄言耳。今独臣有。",
-    kana:"これはたわごとのみ。いまひとりわがしんのみあり。",
-    imi:"これはたわごとにすぎない。今ただ私の臣下だけがいる。",
-    koho:"比較形・限定形「独〜耳」",
-    pat:"独り〜のみ ＝ ただ〜だけ（限定強調）",
-    note:"「独」と「耳（のみ）」が呼応して限定を表す。" },
-
-  /* ══════════ 選択形 (p.80-81) ══════════ */
-  { cat:"選択形", haku:"寧為鶏口、無為牛後。",
-    kana:"むしろけいこうとなるとも、ぎゅうごとなることなかれ。",
-    imi:"むしろ鶏の口となれ、牛の尻となるな。",
+  /* ══════════ 選択形 ══════════ */
+  {
+    cat:"選択形",
+    haku:"寧為鶏口、無為牛後。",
+    kana:"寧ろ鶏口と為るとも、牛後と為ること無かれ。",
+    imi:"むしろ鶏の口（小集団のトップ）となれ、牛の尻（大集団の末端）となるな。",
     koho:"選択形「寧〜無〜」",
     pat:"寧ろ〜（むしろ〜）、無かれ〜 ＝ 〜よりもむしろ〜せよ",
-    note:"二択でどちらを選ぶか示す。" },
+    note:"二択でどちらかを選ぶ構文。「鶏口牛後」の語源。"
+  },
+  {
+    cat:"選択形",
+    haku:"花寧為鶏口与少。",
+    kana:"花は寧ろ鶏口と与に少なし。",
+    imi:"いっそ鶏口となるほうが少ない（控えめ）だ。",
+    koho:"選択形「寧〜与〜」",
+    pat:"寧ろ〜与〜（むしろ〜するほうが〜）",
+    note:"「与」は比較・選択の接続詞として使われる。"
+  },
 
-  { cat:"選択形", haku:"牛後。寧為鶏口。",
-    kana:"ぎゅうご。むしろけいこうとなれ。",
-    imi:"（大きな組織の）末端になるより、むしろ小さな組織の長となれ。",
-    koho:"選択形「寧〜」",
-    pat:"寧ろ〜（むしろ〜） ＝ 〜よりもむしろ〜",
-    note:"「牛後より鶏口」の格言。" },
-
-  /* ══════════ 抑揚形 (p.84-85) ══════════ */
-  { cat:"抑揚形", haku:"死馬且買之、況生馬乎。",
-    kana:"しんだうまですらこれをかう、いわんやいきたうまをや。",
+  /* ══════════ 抑揚形 ══════════ */
+  {
+    cat:"抑揚形",
+    haku:"死馬且買之、況生馬乎。",
+    kana:"死馬すら且つこれを買う、況んや生馬をや。",
     imi:"死んだ馬でさえそれを買う。まして生きた馬はいうまでもない。",
     koho:"抑揚形「且〜況〜乎」",
     pat:"且つ〜（かつ〜）、況んや〜をや ＝ 〜でさえ〜、まして〜はなおさら",
-    note:"「且・猶・尚」で下を受け、「況」で強調する。" },
-
-  { cat:"抑揚形", haku:"臣之壮也、猶不如人、況於老乎。",
-    kana:"しんのさかんなるや、なおひとにしかず、いわんやろうにおいてをや。",
+    note:"「且・猶・尚」で下を受け、「況」で強調する。「長頃伯且執与君少」の例も同様。"
+  },
+  {
+    cat:"抑揚形",
+    haku:"臣之壮也、猶不如人、況於老乎。",
+    kana:"臣の壮んなるや、猶ほ人に如かず、況んや老いたるにおいてをや。",
     imi:"私が若い盛りでも人に及ばなかった。まして老いてはなおさらだ。",
     koho:"抑揚形「猶〜況〜乎」",
     pat:"猶ほ〜（なお〜）、況んや〜をや ＝ 〜でさえ〜、まして〜は",
-    note:"左伝より。猶＋況の典型的抑揚形。" },
+    note:"左伝より。猶＋況の典型的抑揚形。"
+  },
 
-  /* ══════════ 願望形 (p.86) ══════════ */
-  { cat:"願望形", haku:"請以戦喩。",
-    kana:"こうそんでたとえをもちいさせてください。",
+  /* ══════════ 願望形 ══════════ */
+  {
+    cat:"願望形",
+    haku:"請以戦喩。",
+    kana:"請う、戦いを以て喩えんことを。",
     imi:"どうか戦いのたとえを使わせてください。",
     koho:"願望形「請〜」",
     pat:"請う〜（こう〜） ＝ どうか〜させてください",
-    note:"「請」は話し手が相手に許可を求める丁寧な表現。孟子より。" },
+    note:"「請」は話し手が相手に許可を求める丁寧な表現。孟子より。"
+  },
 
-  { cat:"願望形", haku:"請以戦喩。死馬况生馬乎。",
-    kana:"こうそんでたとえをもちいん。",
-    imi:"どうか戦いで例えさせてください。",
-    koho:"願望形「請〜」",
-    pat:"請う〜 ＝ どうか〜させてください（許可を求める願望）",
-    note:"孟子「梁恵王」冒頭。王への働きかけ。" },
-
-  /* ══════════ 仮定形 (p.68-71) ══════════ */
-  { cat:"仮定形", haku:"後則為人所制。",
-    kana:"のちにはひとのおさえるところとなる。",
+  /* ══════════ 仮定形 ══════════ */
+  {
+    cat:"仮定形",
+    haku:"後則為人所制。",
+    kana:"後れれば則ち人の制する所と為る。",
     imi:"のちには人に制せられてしまう。",
     koho:"仮定形「則〜」",
     pat:"〜ば（ならば）、則ち〜（すなわち〜） ＝ もし〜なら〜",
-    note:"「則」は帰結を示す接続字。" },
-
-  { cat:"仮定形", haku:"如能充之、足以保四海。",
-    kana:"もしよくこれをみたさば、したもってしかいをたもつにたる。",
+    note:"「則」は帰結を示す接続字。"
+  },
+  {
+    cat:"仮定形",
+    haku:"如能充之、足以保四海。",
+    kana:"もし能くこれを充たさば、以て四海を保つに足る。",
     imi:"もしこれを満たすことができれば、四海を保つに十分だ。",
     koho:"仮定形「如〜」",
     pat:"如し〜（もし〜）ば ＝ もし〜ならば",
-    note:"「如・若・設・仮・令」などが仮定の接続詞。" },
-
-  { cat:"仮定形", haku:"苟能充之。",
-    kana:"いやしくもよくこれをみたさば。",
+    note:"「如・若・設・仮・令」などが仮定の接続詞。"
+  },
+  {
+    cat:"仮定形",
+    haku:"苟能充之。",
+    kana:"苟しくも能くこれを充たさば。",
     imi:"もしこれを満たすことができるならば。",
     koho:"仮定形「苟〜」",
     pat:"苟くも〜（いやしくも〜） ＝ もし〜ならば",
-    note:"「苟」は軽い仮定を表す接続字。" },
-
-  { cat:"仮定形", haku:"縦彼不言、籍独不愧於心乎。",
-    kana:"たとえかれがいわなくても、せきひとりこころにはじざらんや。",
+    note:"「苟」は軽い仮定を表す接続字。"
+  },
+  {
+    cat:"仮定形",
+    haku:"縦彼不言、籍独不愧於心乎。",
+    kana:"縦い彼が言わざるも、籍ひとり心に愧じざらんや。",
     imi:"たとえ彼が言わなくても、項羽ひとり心に恥じることはないのか。",
     koho:"仮定形「縦〜」（逆接仮定）",
     pat:"縦い〜（たとい〜） ＝ たとえ〜であっても",
-    note:"「縦・令・仮・設」はすべて逆接仮定を作る。" },
-
-  { cat:"仮定形", haku:"不然、籍何以至此。",
-    kana:"しからずんば、せきなにをもってここにいたらんや。",
+    note:"「縦・令・仮・設」はすべて逆接仮定を作る。"
+  },
+  {
+    cat:"仮定形",
+    haku:"不然、籍何以至此。",
+    kana:"然らずんば、籍は何を以てここに至らんや。",
     imi:"そうでなければ、私はどうしてここに至ったのか。",
     koho:"仮定形「不然〜」",
     pat:"然らずんば ＝ そうでなければ",
-    note:"「然」は前文の状況を受ける。" },
+    note:"「然」は前文の状況を受ける。"
+  },
+  {
+    cat:"仮定形",
+    haku:"如詩不成、罰依金谷酒数。",
+    kana:"もし詩成らずんば、罰は金谷の酒数に依れ。",
+    imi:"もし詩ができなければ、罰は金谷の酒の数に従え。",
+    koho:"仮定形「如〜不成、罰〜」",
+    pat:"如し〜ずんば ＝ もし〜でなければ（仮定・条件）",
+    note:"「如〜不〜」の形で否定的条件を示す。"
+  },
 
-  /* ══════════ 限定形 (p.72-73) ══════════ */
-  { cat:"限定形", haku:"惟独臣有。",
-    kana:"ただわがしんのみあり。",
+  /* ══════════ 限定形 ══════════ */
+  {
+    cat:"限定形",
+    haku:"惟独臣有。",
+    kana:"惟だわが臣のみ有り。",
     imi:"ただ私の臣下だけがいる。",
     koho:"限定形「惟〜耳」",
     pat:"惟（ただ）〜のみ ＝ ただ〜だけ（限定）",
-    note:"「惟・唯・只・但」＋「耳・已・而已」がセット。" },
-
-  { cat:"限定形", haku:"不過一升耳。",
-    kana:"いっしょうにすぎざるのみ。",
+    note:"「惟・唯・只・但」＋「耳・已・而已」がセット。"
+  },
+  {
+    cat:"限定形",
+    haku:"不過一升耳。",
+    kana:"一升に過ぎざるのみ。",
     imi:"わずか一升にすぎないだけだ。",
     koho:"限定形「不過〜耳」",
     pat:"〜に過ぎざるのみ ＝ 〜にすぎない",
-    note:"「耳（のみ）」で文末を締めるのが限定形の特徴。" },
-
-  { cat:"限定形", haku:"保四能充足数。",
-    kana:"したもって、よく数を充足するにたる。",
-    imi:"十分に数を満たすことができる。",
-    koho:"限定形「足以〜」",
-    pat:"足以〜（したもって〜にたる） ＝ 〜するのに十分だ",
-    note:"「足」は「十分である」意。" },
-
-  { cat:"限定形", haku:"縦不言、独不愧於心乎。",
-    kana:"たとえいわなくても、ひとりこころにはじざらんや。",
-    imi:"たとえ言わなくても、ひとり心に恥じることはないか。",
+    note:"「耳（のみ）」で文末を締めるのが限定形の特徴。"
+  },
+  {
+    cat:"限定形",
+    haku:"此妄言耳。今独臣有船。",
+    kana:"これは妄言のみ。今ただわが臣のみ船有り。",
+    imi:"これはたわごとにすぎない。今ただ私の臣下だけが船を持っている。",
+    koho:"限定形「独〜耳」",
+    pat:"独り〜のみ ＝ ただ〜だけ（限定強調）",
+    note:"「独」と「耳（のみ）」が呼応して限定を表す。"
+  },
+  {
+    cat:"限定形",
+    haku:"縦不愧於人、独不愧於心乎。",
+    kana:"縦い人に愧じずとも、独り心に愧じざらんや。",
+    imi:"たとえ人に恥じなくても、ただひとり心に恥じないでよいのか。",
     koho:"限定形「独〜乎」",
     pat:"独り〜（ひとり〜） ＝ ただ〜だけ（強調）",
-    note:"「独」は限定と反語を兼ねることがある。" },
+    note:"「独」は限定と反語を兼ねることがある。"
+  },
+  {
+    cat:"限定形",
+    haku:"保四海能充足数。",
+    kana:"四海を保つに能く足数を充たす。",
+    imi:"四海を保つのに十分に数を満たすことができる。",
+    koho:"限定形「足以〜」",
+    pat:"以て〜するに足る ＝ 〜するのに十分だ",
+    note:"「足」は「十分である」意。「足以〜」の形で使う。"
+  },
 
-  /* ══════════ 受身形 (p.64-65) ══════════ */
-  { cat:"受身形", haku:"信而見疑、忠而被謗。",
-    kana:"まことにしてもうたがわれ、ちゅうにしてそしらる。",
+  /* ══════════ 受身形 ══════════ */
+  {
+    cat:"受身形",
+    haku:"信而見疑、忠而被謗。",
+    kana:"信にして疑わる、忠にして謗らる。",
     imi:"誠実でありながら疑われ、忠実でありながら謗られる。",
     koho:"受身形「見〜・被〜」",
     pat:"見〜（〜らる）、被〜（〜さる） ＝ 〜される（受身）",
-    note:"「見」「被」は受身を表す助字。屈原「漁父辞」より。" },
-
-  { cat:"受身形", haku:"為人所笑。",
-    kana:"ひとのわらうところとなる。",
+    note:"「見」「被」は受身を表す助字。屈原「漁父辞」より。"
+  },
+  {
+    cat:"受身形",
+    haku:"為人所笑。",
+    kana:"人の笑う所と為る。",
     imi:"人に笑われる。",
     koho:"受身形「為〜所〜」",
     pat:"為A所B（AのBするところとなる） ＝ AにBされる",
-    note:"「為〜所〜」は最も明確な受身構文。" },
-
-  { cat:"受身形", haku:"手嫁於奴隷人之。",
-    kana:"てをどれいのひとにとらわれる。",
+    note:"「為〜所〜」は最も明確な受身構文。"
+  },
+  {
+    cat:"受身形",
+    haku:"手嫁於奴隷人之。",
+    kana:"手を奴隷の人に嫁せらる。",
     imi:"手を奴隷の人によって捕らえられる。",
     koho:"受身形「於〜」",
     pat:"〜於A（〜AにBさる） ＝ Aに〜される",
-    note:"「於」で動作主を示す受身。" },
+    note:"「於」で動作主を示す受身。"
+  },
 
-  /* ══════════ 使役形 (p.62-63) ══════════ */
-  { cat:"使役形", haku:"使大夫二人往。",
-    kana:"たいふふたりをしてゆかしむ。",
-    imi:"大夫二人を行かせた。",
+  /* ══════════ 使役形 ══════════ */
+  {
+    cat:"使役形",
+    haku:"先使大夫二人往。",
+    kana:"先ず大夫二人をして往かしむ。",
+    imi:"まず大夫二人を行かせた。",
     koho:"使役形「使〜」",
     pat:"使A（をして）B（せ）しむ ＝ AにBさせる",
-    note:"「使・令・遣・教・俾」はすべて使役を作る。" },
-
-  { cat:"使役形", haku:"先使馬。",
-    kana:"まずうまをさきにゆかしめよ。",
-    imi:"まず馬を先に行かせよ。",
-    koho:"使役形「使〜」",
-    pat:"使A（をして）B（せ）しむ ＝ AにBさせる",
-    note:"「使」の後に動作主Aが来る。" },
-
-  { cat:"使役形", haku:"亦说而时习之、不亦乐乎。",
-    kana:"またまなびてときにこれをならいきたらば、またよろこばしからずや。",
+    note:"「使・令・遣・教・俾」はすべて使役を作る。"
+  },
+  {
+    cat:"使役形",
+    haku:"学而時習之、不亦説乎。",
+    kana:"学びて時にこれを習う、また説ばしからずや。",
     imi:"学んで時に復習する、これもまた楽しいではないか。",
-    koho:"使役形「亦〜乎」（詠嘆）",
+    koho:"使役形「不亦〜乎」（詠嘆）",
     pat:"不亦〜乎（またAにあらずや） ＝ 〜でもあるではないか",
-    note:"論語冒頭の有名な一句。詠嘆の句形。" },
+    note:"論語冒頭の有名な一句。詠嘆の句形。"
+  },
 
-  /* ══════════ 詠嘆形 (p.58-59) ══════════ */
-  { cat:"詠嘆形", haku:"何楚人之多也。",
-    kana:"なんぞそのひとのおおきかな。",
+  /* ══════════ 詠嘆形 ══════════ */
+  {
+    cat:"詠嘆形",
+    haku:"何楚人之多也。",
+    kana:"何ぞその人の多きかな。",
     imi:"なんと楚の人の多いことか。",
     koho:"詠嘆形「何〜也」",
     pat:"何ぞ〜（なんぞ〜）也（や） ＝ なんと〜であることか",
-    note:"感嘆・驚きを表す。「嗚呼」と組み合わさることも多い。" },
-
-  { cat:"詠嘆形", haku:"也是何楚大丈夫之多。",
-    kana:"なんぞそのひとのおおきかな、まことにだいじょうぶよ。",
+    note:"感嘆・驚きを表す。「嗚呼」と組み合わさることも多い。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"也是何楚大丈夫之多。",
+    kana:"なんぞその人の多きかな、まことに大丈夫よ。",
     imi:"なんと楚の人の多いことか、まさに大丈夫よ。",
     koho:"詠嘆形「何〜也」「也哉」",
     pat:"何ぞ〜也 ＝ なんと〜であることか（強い感嘆）",
-    note:"「也・哉・乎・夫」は詠嘆の終助詞。" },
-
-  { cat:"詠嘆形", haku:"敵不避廉将軍、独畏大将軍哉。",
-    kana:"てきはれんしょうぐんをさけず、ただたいしょうぐんをおそれるのか。",
+    note:"「也・哉・乎・夫」は詠嘆の終助詞。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"敵不避廉将軍、独畏大将軍哉。",
+    kana:"敵は廉将軍を避けずして、独り大将軍を畏れるか。",
     imi:"敵は廉将軍を避けず、ただ大将軍だけを恐れるのか。",
     koho:"詠嘆形「哉」",
     pat:"〜哉（かな） ＝ なんと〜であることか",
-    note:"「哉」で強い感動・詠嘆を表す。" },
-
-  { cat:"詠嘆形", haku:"是嶷水之性若此。",
-    kana:"これぎょうすいのせいかくはかくのごとし。",
+    note:"「哉」で強い感動・詠嘆を表す。史記より。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"是嶷水之性若此。",
+    kana:"是れ水の性の若此なり。",
     imi:"なんとこれが水の本性というものか。",
     koho:"詠嘆形「若此」",
-    pat:"〜かくのごとし ＝ このようなものだ（詠嘆）",
-    note:"水の本性をめぐる問答から。" },
-
-  { cat:"詠嘆形", haku:"虎虎分奈何。",
-    kana:"とらとらわかれていかんせん。",
+    pat:"若此（かくのごとし） ＝ このようなものだ（詠嘆）",
+    note:"水の本性をめぐる問答から。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"虎虎分奈何。",
+    kana:"虎虎、分かれて奈何せん。",
     imi:"虎と虎が分かれてどうしようか（どうにもならない）。",
     koho:"詠嘆形「奈何」",
     pat:"奈何（いかんせん） ＝ どうしようか（詠嘆・困惑）",
-    note:"困惑・嘆きを伴う疑問・詠嘆。" },
+    note:"困惑・嘆きを伴う疑問・詠嘆。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"虎虎分虎性若此。",
+    kana:"虎の性の若此なり。",
+    imi:"なんと虎の本性はこのようなものか。",
+    koho:"詠嘆形「若此」",
+    pat:"〜若此（〜かくのごとし） ＝ 〜はこのようなものだ",
+    note:"詠嘆の句形。「是嶷水之性若此」と対応。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"虎虎分何嶷水之性若此。",
+    kana:"何ぞ水の性の若此なるや。",
+    imi:"なんと水の本性はこのようなものか。",
+    koho:"詠嘆形「何〜若此」",
+    pat:"何ぞ〜若此 ＝ なんと〜はこのようなものか",
+    note:"「何〜」で強調した詠嘆形。"
+  },
 
   /* ══════════ 二重否定 ══════════ */
-  { cat:"二重否定", haku:"無不知。",
-    kana:"しらざるなし。",
+  {
+    cat:"二重否定",
+    haku:"無不知。",
+    kana:"知らざるなし。",
     imi:"知らないものはない（誰もが知っている）。",
     koho:"二重否定「無不〜」",
     pat:"無不〜（〜ざるなし） ＝ 〜しないものはない＝すべて〜する",
-    note:"二重否定は強い肯定。" },
-
-  { cat:"二重否定", haku:"不可不学。",
-    kana:"まなばざるべからず。",
+    note:"二重否定は強い肯定を表す。"
+  },
+  {
+    cat:"二重否定",
+    haku:"不可不学。",
+    kana:"学ばざるべからず。",
     imi:"学ばないわけにはいかない（必ず学ぶべきだ）。",
     koho:"二重否定「不可不〜」",
     pat:"不可不〜（〜ざるべからず） ＝ 〜しないわけにはいかない",
-    note:"最も強い義務を表す二重否定。" },
+    note:"最も強い義務を表す二重否定。"
+  },
 
   /* ══════════ 累加形 ══════════ */
-  { cat:"累加形", haku:"況乎不利于吾。",
-    kana:"いわんやわれにとってもりあらざるをや。",
+  {
+    cat:"累加形",
+    haku:"況乎不利于吾。",
+    kana:"況んや吾にとって利ならざるをや。",
     imi:"まして私にとって有利でないことはいうまでもない。",
     koho:"累加形「況〜乎（哉）」",
     pat:"況んや〜をや（いわんや〜をや） ＝ まして〜はなおさら",
-    note:"前文の内容を受けてさらに強い場合を付け加える。" },
-
-  { cat:"累加形", haku:"不但如此、又有他事。",
-    kana:"ただかくのごとくのみならず、またほかのことあり。",
+    note:"前文の内容を受けてさらに強い場合を付け加える。"
+  },
+  {
+    cat:"累加形",
+    haku:"不但如此、又有他事。",
+    kana:"ただかくのごとくのみならず、また他の事あり。",
     imi:"ただこれだけでなく、さらに他のこともある。",
     koho:"累加形「不但〜又〜」",
-    pat:"ただ〜のみならず（のみならず）、また〜 ＝ 〜だけでなく、さらに〜",
-    note:"「不唯・非唯・不惟・非徒」も同じ累加の接続表現。" },
+    pat:"ただ〜のみならず、また〜 ＝ 〜だけでなく、さらに〜",
+    note:"「不唯・非唯・不惟・非徒」も同じ累加の接続表現。"
+  },
 
   /* ══════════ 比況形 ══════════ */
-  { cat:"比況形", haku:"过猶不及。",
-    kana:"すぎたるはなおおよばざるがごとし。",
+  {
+    cat:"比況形",
+    haku:"过猶不及。",
+    kana:"過ぎたるは猶ほ及ばざるがごとし。",
     imi:"やり過ぎは、なお及ばないのと同じことだ。",
     koho:"比況形「猶〜（が）如し」",
     pat:"猶ほ〜がごとし ＝ ちょうど〜のようだ",
-    note:"「猶」は再読文字としても、比況としても使われる。論語より。" },
-
-  { cat:"比況形", haku:"民之归仁也、猶水之就下。",
-    kana:"たみのじんにきするや、なおみずのしたにつくがごとし。",
+    note:"「猶」は再読文字としても、比況としても使われる。論語より。"
+  },
+  {
+    cat:"比況形",
+    haku:"民之归仁也、猶水之就下。",
+    kana:"民の仁に帰するや、猶ほ水の下に就くがごとし。",
     imi:"民が仁に帰するのは、ちょうど水が低い方へ流れるのと同じだ。",
     koho:"比況形「猶A之B也」",
     pat:"猶ほAのBするがごとし ＝ ちょうどAがBするようなものだ",
-    note:"孟子より。比況の典型例。" },
+    note:"孟子より。比況の典型例。"
+  },
 
   /* ══════════ 不要形 ══════════ */
-  { cat:"不要形", haku:"不必往。",
-    kana:"かならずしもゆかざるべし。",
+  {
+    cat:"不要形",
+    haku:"不必往。",
+    kana:"必ずしも往かずべし。",
     imi:"必ずしも行く必要はない。",
     koho:"不要形「不必〜」",
     pat:"不必〜（かならずしも〜ず） ＝ 〜する必要はない",
-    note:"「不必・不須・不用」はいずれも不要を表す。" },
-
-  { cat:"不要形", haku:"不須買馬。",
-    kana:"うまをかうにおよばず。",
+    note:"「不必・不須・不用」はいずれも不要を表す。"
+  },
+  {
+    cat:"不要形",
+    haku:"不須買馬。",
+    kana:"馬を買うに及ばず。",
     imi:"馬を買う必要はない。",
     koho:"不要形「不須〜」",
     pat:"不須〜（〜するにおよばず） ＝ 〜する必要はない",
-    note:"「須」の否定で不要を表す。" },
+    note:"「須」の否定で不要を表す。"
+  },
 
   /* ══════════ 呼応副詞 ══════════ */
-  { cat:"呼応副詞", haku:"岂独一人哉。",
-    kana:"あにひとりのひとのみならんや。",
+  {
+    cat:"呼応副詞",
+    haku:"岂独一人哉。",
+    kana:"豈に独り一人のみならんや。",
     imi:"どうしてただ一人だけであろうか（いや、一人ではない）。",
-    koho:"呼応副詞「岂〜哉（乎）」",
+    koho:"呼応副詞「豈〜哉（乎）」",
     pat:"豈に〜んや ＝ どうして〜であろうか（反語）",
-    note:"「豈・安・焉・寧・庸」などが反語副詞として機能する。" },
-
-  { cat:"呼応副詞", haku:"必有仁者也。",
-    kana:"かならずじんしゃあり。",
+    note:"「豈・安・焉・寧・庸」などが反語副詞として機能する。"
+  },
+  {
+    cat:"呼応副詞",
+    haku:"必有仁者也。",
+    kana:"必ず仁者あり。",
     imi:"必ず仁者がいる。",
     koho:"呼応副詞「必〜」",
     pat:"必ず〜（かならず〜） ＝ 必ず〜する（断定的確信）",
-    note:"「必」は強い確信・必然を表す副詞。" },
-
-  { cat:"呼応副詞", haku:"終不能復入。",
-    kana:"ついにまたはいることあたわず。",
+    note:"「必」は強い確信・必然を表す副詞。"
+  },
+  {
+    cat:"呼応副詞",
+    haku:"終不能復入。",
+    kana:"終に又入ること能わず。",
     imi:"ついに再び入ることができなかった。",
     koho:"呼応副詞「終〜」",
     pat:"終に〜ず（ついに〜ず） ＝ 最終的に〜しない（しなかった）",
-    note:"「終」は結末を強調する副詞。" },
+    note:"「終」は結末を強調する副詞。"
+  },
 
-  /* ══════════ 燕雀・鴻鵠（故事成語） ══════════ */
-  { cat:"故事句形", haku:"燕雀安知鴻鵠之志哉。",
-    kana:"えんじゃくいずくんぞこうこくのこころざしをしらんや。",
-    imi:"燕や雀のような小さな鳥に、鴻や鵠のような大きな鳥の志がわかろうか（いや、わからない）。",
-    koho:"反語形「安知〜哉」",
-    pat:"安んぞ〜をしらんや ＝ どうして〜を知ることができようか",
-    note:"史記「陳渉世家」。大志を持つ英雄の比喩として有名。" },
+  /* ══════════ 故事句形 ══════════ */
+  {
+    cat:"故事句形",
+    haku:"莫死生、不能料。",
+    kana:"死と生とを料ること能わず。",
+    imi:"死と生とを計ることができない。",
+    koho:"故事「料死料生」",
+    pat:"〜を料ること能わず ＝ 〜を計ることができない",
+    note:"生死を超えた問いを示す表現。"
+  },
 
-  { cat:"故事句形", haku:"我安适归矣。",
-    kana:"われいずくにかかえらんや。",
-    imi:"私はどこに帰ることができようか（帰る場所がない）。",
-    koho:"反語形「安〜矣」",
-    pat:"安んぞ〜んや ＝ どうして〜できようか",
-    note:"「矣」は断定・詠嘆の終助詞。" },
-
-  { cat:"故事句形", haku:"夫我志適王敵。",
-    kana:"それわれはおうにてきすることをこころざす。",
-    imi:"私は王に対抗することを志す。",
-    koho:"疑問形「夫〜」",
-    pat:"夫（それ）〜 ＝ 発語の助字（文頭に置いて文章を起こす）",
-    note:"「夫」は発語・提示の助字。" },
-
-  /* ══════════ 独特の句形 ══════════ */
-  { cat:"特殊句形", haku:"何謂也。",
-    kana:"なにをかいうや。",
+  /* ══════════ 特殊句形 ══════════ */
+  {
+    cat:"特殊句形",
+    haku:"何謂也。",
+    kana:"何をか謂うや。",
     imi:"何を言っているのか。（どういう意味か。）",
     koho:"疑問形「何謂〜」",
     pat:"何を謂うや ＝ どういう意味か・何を言うのか",
-    note:"「謂」は「言う・意味する」。" },
-
-  { cat:"特殊句形", haku:"誰与王敵。",
-    kana:"だれかおうとてきせん。",
-    imi:"誰が王と対抗できようか（誰もできない）。",
-    koho:"反語形「誰〜乎」",
-    pat:"誰か〜（だれか〜） ＝ 誰が〜できようか（反語）",
-    note:"「誰」を使った反語形。" },
-
-  { cat:"特殊句形", haku:"此不過数里。",
-    kana:"これはすうりにすぎず。",
+    note:"「謂」は「言う・意味する」。"
+  },
+  {
+    cat:"特殊句形",
+    haku:"此不過数里。",
+    kana:"これは数里に過ぎず。",
     imi:"これは数里にすぎない。",
     koho:"限定形「不過〜」",
     pat:"不過〜（〜にすぎず） ＝ 〜にすぎない（限定）",
-    note:"「不過」で最大限を限定する。" },
+    note:"「不過」で最大限を限定する。"
+  },
+
+  /* ══════════ 仮定形（追加）══════════ */
+  {
+    cat:"仮定形",
+    haku:"縦令也不言、籍何以至此。",
+    kana:"縦い令なりとも言わずんば、籍は何を以てここに至らんや。",
+    imi:"たとえ命令であっても言わなければ、私はどうしてここに至ったのか。",
+    koho:"仮定形「縦令〜」",
+    pat:"縦令〜（たとひ〜とも） ＝ たとえ〜であっても",
+    note:"「縦令」は逆接仮定の強調形。「縦」単独より強い逆接を示す。"
+  },
+  {
+    cat:"仮定形",
+    haku:"設令不得入、何者。",
+    kana:"設令入ることを得ずんば、何者ぞ。",
+    imi:"もし入ることができないとすれば、それは何者か。",
+    koho:"仮定形「設令〜」",
+    pat:"設令〜（たとひ〜とも） ＝ もし〜とすれば",
+    note:"「設・令・仮・縦」はすべて仮定・逆接仮定を表す。"
+  },
+  {
+    cat:"仮定形",
+    haku:"仮令出、不得也。",
+    kana:"仮令出ずるも、得ること能わず。",
+    imi:"たとえ出ても、得ることはできない。",
+    koho:"仮定形「仮令〜」",
+    pat:"仮令〜（たとへ〜とも） ＝ たとえ〜であっても",
+    note:"「仮令」も逆接仮定。「縦令・設令」と同義。"
+  },
+
+  /* ══════════ 限定形（追加）══════════ */
+  {
+    cat:"限定形",
+    haku:"唯仁者能好人。",
+    kana:"唯だ仁者のみよく人を好む。",
+    imi:"ただ仁者だけがよく人を愛することができる。",
+    koho:"限定形「唯〜」",
+    pat:"唯（ただ）〜のみ ＝ ただ〜だけ",
+    note:"「唯・惟・只・但」はすべて限定の副詞。"
+  },
+  {
+    cat:"限定形",
+    haku:"但見長江天際流。",
+    kana:"但だ長江の天際に流るるを見る。",
+    imi:"ただ長江が天の果てへ流れるのを見るだけだ。",
+    koho:"限定形「但〜」",
+    pat:"但（ただ）〜のみ ＝ ただ〜するだけ",
+    note:"李白「黄鶴楼送孟浩然之広陵」より。"
+  },
+  {
+    cat:"限定形",
+    haku:"臣死且不避、卮酒安足辞。",
+    kana:"臣は死すら且つ避けず、卮酒安くんぞ辞するに足らんや。",
+    imi:"私は死でさえ避けないのに、一杯の酒などどうして辞退するのに足りようか。",
+    koho:"限定形「足以〜」と抑揚形の複合",
+    pat:"〜安くんぞ辞するに足らんや ＝ どうして〜するに十分であろうか（いや足りない）",
+    note:"史記「鴻門之会」より。樊噲の豪快な場面。"
+  },
+
+  /* ══════════ 受身形（追加）══════════ */
+  {
+    cat:"受身形",
+    haku:"屈原既放、游於江潭。",
+    kana:"屈原は既に放たれて、江潭に游ぶ。",
+    imi:"屈原はすでに追放されて、川辺をさまよっている。",
+    koho:"受身形「放〜」（受身の動詞）",
+    pat:"〜放たる ＝ 追放される（受身）",
+    note:"屈原「漁父辞」の冒頭。受身形の動詞用法。"
+  },
+  {
+    cat:"受身形",
+    haku:"見笑於大方之家。",
+    kana:"大方の家に笑わるるを見る。",
+    imi:"識者に笑われる。",
+    koho:"受身形「見〜於〜」",
+    pat:"見〜於A（AにBさるるを見る） ＝ Aに〜される",
+    note:"「見」＋「於」で動作主を示す受身の複合形。"
+  },
+
+  /* ══════════ 使役形（追加）══════════ */
+  {
+    cat:"使役形",
+    haku:"令将軍与臣有隙。",
+    kana:"将軍をして臣と隙有らしむ。",
+    imi:"将軍と私とに不和を生じさせる。",
+    koho:"使役形「令〜」",
+    pat:"令A（をして）B（せ）しむ ＝ AにBさせる",
+    note:"「令」も使役を作る助字。史記「鴻門之会」より。"
+  },
+  {
+    cat:"使役形",
+    haku:"遣将守関。",
+    kana:"将をして関を守らしむ。",
+    imi:"将軍を派遣して関所を守らせた。",
+    koho:"使役形「遣〜」",
+    pat:"遣A（をして）B（せ）しむ ＝ Aを派遣してBさせる",
+    note:"「遣」は「遣わす」という使役。史記より。"
+  },
+
+  /* ══════════ 詠嘆形（追加）══════════ */
+  {
+    cat:"詠嘆形",
+    haku:"嗚呼、亦盛矣哉。",
+    kana:"嗚呼、また盛んなるかな。",
+    imi:"ああ、なんと盛んなことか。",
+    koho:"詠嘆形「嗚呼〜哉」",
+    pat:"嗚呼〜かな ＝ ああ、なんと〜であることか（強い詠嘆）",
+    note:"「嗚呼・嗟乎・呜呼」などは詠嘆の間投詞。「哉・かな」と呼応。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"大哉堯之為君也。",
+    kana:"大いなるかな、堯の君たるや。",
+    imi:"なんと偉大なことか、堯の君主たるや。",
+    koho:"詠嘆形「大哉〜也」（倒置詠嘆）",
+    pat:"〜哉（かな）〜也 ＝ なんと〜であることか（倒置強調）",
+    note:"形容詞を文頭に倒置して詠嘆を強調する形。論語より。"
+  },
+  {
+    cat:"詠嘆形",
+    haku:"善哉、問也。",
+    kana:"善いかな、問いや。",
+    imi:"よいことだ、この質問は。",
+    koho:"詠嘆形「善哉〜也」",
+    pat:"善いかな〜 ＝ なんとよいことか（賞賛の詠嘆）",
+    note:"「善哉」は賞賛の詠嘆表現。"
+  },
+
+  /* ══════════ 比較形（追加）══════════ */
+  {
+    cat:"比較形",
+    haku:"与其有誉於前、孰若無毀於其後。",
+    kana:"其の前に誉れ有るよりも、其の後に毀り無きに如かんや。",
+    imi:"今褒められるよりも、後世で非難されないほうがよいではないか。",
+    koho:"比較形「与其〜孰若〜」",
+    pat:"其の〜よりも、孰（いず）れか〜に若かん ＝ 〜よりも〜のほうがよい",
+    note:"「与其A、孰若B」は「AよりもBのほうがよい」の選択・比較。"
+  },
+  {
+    cat:"比較形",
+    haku:"莫如先処其地。",
+    kana:"先にその地に処するに如くは莫し。",
+    imi:"先にその土地を占拠するほうがよい。",
+    koho:"比較形「莫如〜」",
+    pat:"〜に如くは莫し（〜にしくはなし） ＝ 〜するのが一番よい",
+    note:"「莫如・莫若・不如・不若」はいずれも「〜にしかず」と読む。"
+  },
+  {
+    cat:"比較形",
+    haku:"国以民為本。",
+    kana:"国は民を以て本と為す。",
+    imi:"国は民を根本とする。",
+    koho:"比較形「以A為B」",
+    pat:"AをBと為す（AをBとみなす） ＝ AをBと考える",
+    note:"「以A為B」は「AをBとみなす・する」。比較・評価を示す構文。"
+  },
+  {
+    cat:"比較形",
+    haku:"天下莫柔弱於水。",
+    kana:"天下に水より柔弱なるは莫し。",
+    imi:"天下に水より柔らかく弱いものはない。",
+    koho:"比較形「莫〜於〜」",
+    pat:"〜より〜なるは莫し ＝ 〜より〜なものはない（最上級）",
+    note:"老子より。「莫〜於〜」で最上級を表す。"
+  },
+
+  /* ══════════ 選択形（追加）══════════ */
+  {
+    cat:"選択形",
+    haku:"与其生而辱、不若死而栄。",
+    kana:"其の生きて辱めらるるよりは、死して栄あるに若かず。",
+    imi:"生きて恥辱を受けるよりは、死んで名誉を得るほうがよい。",
+    koho:"選択形「与其〜不若〜」",
+    pat:"其の〜よりは、〜に若かず ＝ 〜よりも〜のほうがよい",
+    note:"「与其A不若B」はAよりBを選ぶ。「与其A寧B」も同じ。"
+  },
+  {
+    cat:"選択形",
+    haku:"吾与其死於臣之手、寧死於二三子之手。",
+    kana:"吾は其の臣の手に死するよりも、寧ろ二三子の手に死せん。",
+    imi:"私は家臣の手で死ぬよりも、むしろ弟子たちの手で死にたい。",
+    koho:"選択形「与其〜寧〜」",
+    pat:"其の〜よりも、寧ろ〜 ＝ 〜よりもむしろ〜したい",
+    note:"論語より。孔子の臨終の場面。"
+  },
+
+  /* ══════════ 抑揚形（追加）══════════ */
+  {
+    cat:"抑揚形",
+    haku:"此尚不能前、況巨鱸乎。",
+    kana:"これすら尚ほ前に進むこと能わず、況んや巨鱸においてをや。",
+    imi:"これでさえ前に進めないのに、まして大きな鱸はなおさらだ。",
+    koho:"抑揚形「尚〜況〜乎」",
+    pat:"尚ほ〜（なお〜）、況んや〜をや ＝ 〜でさえ〜、まして〜は",
+    note:"「尚」も「猶・且」と同じく抑揚形の前半に使われる。"
+  },
+  {
+    cat:"抑揚形",
+    haku:"一羽之軽、尚不能堪、況千鈞乎。",
+    kana:"一羽の軽きも、尚ほ堪うること能わず、況んや千鈞においてをや。",
+    imi:"一羽の軽さでさえ堪えられない。まして千鈞の重さはなおさらだ。",
+    koho:"抑揚形「尚〜況〜乎」",
+    pat:"尚ほ〜能わず、況んや〜をや ＝ 〜でさえできない、まして〜はなおさら",
+    note:"「尚〜況〜乎」の典型的な抑揚形。"
+  },
+
+  /* ══════════ 願望形（追加）══════════ */
+  {
+    cat:"願望形",
+    haku:"願為市鞍馬、従此替爺征。",
+    kana:"願わくば市に馬鞍を為め、此より爺に替わりて征かん。",
+    imi:"どうか市場で鞍と馬を買い、ここから父の代わりに出征したい。",
+    koho:"願望形「願〜」",
+    pat:"願わくは〜（ねがわくは〜） ＝ どうか〜したい・〜してほしい",
+    note:"木蘭詩より。「願」は話し手の強い望みを表す。"
+  },
+  {
+    cat:"願望形",
+    haku:"欲窮千里目、更上一層楼。",
+    kana:"千里の目を窮めんと欲せば、更に上る一層の楼。",
+    imi:"千里の彼方まで見晴らしたいなら、さらに一層高い楼に登れ。",
+    koho:"願望形「欲〜」",
+    pat:"〜を欲す（〜を欲せば） ＝ 〜したい（〜したいなら）",
+    note:"王之渙「登鸛雀楼」より。「欲」は欲望・願望を表す。"
+  },
+
+  /* ══════════ 二重否定（追加）══════════ */
+  {
+    cat:"二重否定",
+    haku:"無適不可也。",
+    kana:"適する無く不可なる無し。",
+    imi:"こだわりなくすべてのことに対応できる。",
+    koho:"二重否定「無〜無〜」",
+    pat:"〜無く〜無し ＝ 〜もなく〜もない（全面肯定）",
+    note:"論語より。君子はことさらにこうすべきとも、こうすべきでないとも決めない。"
+  },
+  {
+    cat:"二重否定",
+    haku:"人不知而不慍、不亦君子乎。",
+    kana:"人知らずして慍みず、また君子にあらずや。",
+    imi:"人が認めてくれなくても怒らない、それはまた君子ではないか。",
+    koho:"二重否定「不亦〜乎」",
+    pat:"不亦〜乎（またAにあらずや） ＝ 〜でもあるではないか",
+    note:"論語冒頭より。反語的詠嘆の形。"
+  },
+  {
+    cat:"二重否定",
+    haku:"非礼勿視、非礼勿聴。",
+    kana:"礼に非ざれば視ること勿かれ、礼に非ざれば聴くこと勿かれ。",
+    imi:"礼に外れたものを見てはならない、礼に外れたものを聞いてはならない。",
+    koho:"二重否定「非〜勿〜」",
+    pat:"非〜勿〜（〜にあらざれば〜なかれ） ＝ 〜でなければ〜するな",
+    note:"論語「克己復礼」より。「非」と「勿」を組み合わせた否定の強調形。"
+  },
+
+  /* ══════════ 累加形（追加）══════════ */
+  {
+    cat:"累加形",
+    haku:"非唯天時、抑亦人謀也。",
+    kana:"唯だ天時のみにあらず、抑また人謀なり。",
+    imi:"ただ天の時機だけでなく、また人の謀略でもある。",
+    koho:"累加形「非唯〜抑亦〜」",
+    pat:"唯だ〜のみにあらず、抑また〜 ＝ 〜だけでなく、またさらに〜",
+    note:"「不唯・非唯・不惟・非徒」＋「抑・亦・又」で累加を作る。三国志より。"
+  },
+  {
+    cat:"累加形",
+    haku:"非徒無益、而又害之。",
+    kana:"徒に益無きのみならず、また之を害す。",
+    imi:"ただ益がないだけでなく、さらにそれを害する。",
+    koho:"累加形「非徒〜而又〜」",
+    pat:"徒に〜のみならず、また〜 ＝ 〜だけでなく、さらに〜",
+    note:"孟子より。「非徒」は累加の接続表現。"
+  },
+
+  /* ══════════ 比況形（追加）══════════ */
+  {
+    cat:"比況形",
+    haku:"其言也、訥若訥。",
+    kana:"その言や、訥なるがごとし。",
+    imi:"その言葉は、どもっているようなものだ。",
+    koho:"比況形「〜若〜」",
+    pat:"〜がごとし ＝ 〜のようだ",
+    note:"「如・若・似」はいずれも比況を表す助字。"
+  },
+  {
+    cat:"比況形",
+    haku:"君子之過也、如日月之食焉。",
+    kana:"君子の過ちや、日月の食するがごとし。",
+    imi:"君子の過ちは、日食・月食のようなものだ。",
+    koho:"比況形「如〜焉」",
+    pat:"〜がごとし（〜焉） ＝ 〜のようなものだ",
+    note:"論語より。君子の過ちは隠せないが、改めると人が仰ぎ見るという意。"
+  },
+  {
+    cat:"比況形",
+    haku:"学而不思則罔、思而不学則殆。",
+    kana:"学びて思わざれば則ち罔く、思いて学ばざれば則ち殆し。",
+    imi:"学んでも考えなければ無駄になり、考えても学ばなければ危険だ。",
+    koho:"比況形・仮定形の複合「則〜」",
+    pat:"〜ば則ち〜 ＝ もし〜ならば〜となる",
+    note:"論語より。「則」は帰結を示す。学思のバランスを説く名句。"
+  },
+
+  /* ══════════ 不要形（追加）══════════ */
+  {
+    cat:"不要形",
+    haku:"不用問他人。",
+    kana:"他人に問うを用いず。",
+    imi:"他人に聞く必要はない。",
+    koho:"不要形「不用〜」",
+    pat:"不用〜（〜するをもちいず） ＝ 〜する必要はない",
+    note:"「不用」は「用いる必要がない」意の不要形。"
+  },
+
+  /* ══════════ 呼応副詞（追加）══════════ */
+  {
+    cat:"呼応副詞",
+    haku:"固将弊之、君勿患也。",
+    kana:"固より之を弊せん、君患うること勿かれ。",
+    imi:"もとよりこれを廃する。君は心配するな。",
+    koho:"呼応副詞「固〜」",
+    pat:"固より〜（もとより〜） ＝ もちろん〜・元来〜",
+    note:"「固」は「もとより・もちろん・当然」の意の副詞。"
+  },
+  {
+    cat:"呼応副詞",
+    haku:"果如期帰。",
+    kana:"果たして期の如く帰る。",
+    imi:"果たして期待通りに帰った。",
+    koho:"呼応副詞「果〜」",
+    pat:"果たして〜（はたして〜） ＝ 予想通り〜・やはり〜",
+    note:"「果」は予想・期待通りの結果を示す副詞。"
+  },
+  {
+    cat:"呼応副詞",
+    haku:"卒不可得。",
+    kana:"卒に得ること能わず。",
+    imi:"結局得ることができなかった。",
+    koho:"呼応副詞「卒〜」",
+    pat:"卒に〜（つひに〜） ＝ ついに〜・結局〜",
+    note:"「卒・終・竟」はすべて「ついに・結局」を表す副詞。"
+  },
+  {
+    cat:"呼応副詞",
+    haku:"竟不能還。",
+    kana:"竟に還ること能わず。",
+    imi:"ついに帰ることができなかった。",
+    koho:"呼応副詞「竟〜」",
+    pat:"竟に〜ず（ついに〜ず） ＝ 結局〜しなかった",
+    note:"「竟」は「終に・卒に」と同様に最終的な否定結果を示す。"
+  },
+  {
+    cat:"呼応副詞",
+    haku:"遂不復言。",
+    kana:"遂に復た言わず。",
+    imi:"ついに二度と言わなかった。",
+    koho:"呼応副詞「遂〜」",
+    pat:"遂に〜ず（ついに〜ず） ＝ そのまま〜しなかった",
+    note:"「遂」は「そのままの流れで」という結末を示す副詞。"
+  },
+
+  /* ══════════ 故事句形 ══════════ */
+  {
+    cat:"故事句形",
+    haku:"燕雀安知鴻鵠之志哉。",
+    kana:"燕雀、安くんぞ鴻鵠の志を知らんや。",
+    imi:"燕や雀のような小さな鳥に、鴻や鵠のような大きな鳥の志がわかろうか（いや、わからない）。",
+    koho:"反語形「安知〜哉」",
+    pat:"安くんぞ〜を知らんや ＝ どうして〜を知ることができようか",
+    note:"史記「陳渉世家」より。陳渉の大志を示す名言。"
+  },
+  {
+    cat:"故事句形",
+    haku:"矛盾：吾矛之利、於物無不陥也。吾盾之堅、物莫能陥也。",
+    kana:"吾が矛の利は、物として陥さざるなし。吾が盾の堅さ、物として陥すこと能う莫し。",
+    imi:"私の矛の鋭さは何でも貫き通せる。私の盾の堅さは何も貫けない。",
+    koho:"二重否定「無不〜」と否定形「莫能〜」",
+    pat:"無不〜（〜ざるなし）／莫能〜（〜こと能う莫し） ＝ すべて〜する／何も〜できない",
+    note:"韓非子より「矛盾」の語源。「矛」と「盾」の自己矛盾を示す故事。"
+  },
+  {
+    cat:"故事句形",
+    haku:"覆水難収。",
+    kana:"覆水は収め難し。",
+    imi:"こぼれた水は取り返せない（取り返しのつかないことのたとえ）。",
+    koho:"否定形「難〜」",
+    pat:"難し（かたし）〜 ＝ 〜するのが難しい・〜できない",
+    note:"「覆水難収」は「後悔先に立たず」に相当する故事成語。"
+  },
+  {
+    cat:"故事句形",
+    haku:"朝三暮四。",
+    kana:"朝に三つ、暮れに四つ。",
+    imi:"朝に三つ、夕に四つ（目先の違いにこだわって本質を見失うこと）。",
+    koho:"疑問形「〜乎」（反語）",
+    pat:"〜（乎／足乎） ＝ 〜で十分か（いや十分でない）",
+    note:"荘子より「朝三暮四」の故事。猿が朝三暮四と朝四暮三の違いに怒った話。"
+  },
+  {
+    cat:"故事句形",
+    haku:"塞翁之馬。",
+    kana:"塞翁の馬。",
+    imi:"人生の幸不幸は予測できないことのたとえ。",
+    koho:"疑問形「安知〜」",
+    pat:"安くんぞ〜を知らんや ＝ どうして〜がわかろうか",
+    note:"淮南子より「塞翁が馬」の故事。「禍福はあざなえる縄の如し」。"
+  },
 
 ];
 
-// ===== State =====
-let cards = [...ALL];
-let idx = 0;
-let flipped = false;
-let correct = 0;
-let answered = 0;
-let wrongs = [];
 
-// ===== Filter =====
+// ============================================================
+// アプリロジック
+// ============================================================
+let cards = [...ALL];
+let idx = 0, flipped = false, correct = 0, answered = 0, wrongs = [];
+let currentFilter = "全て";  // 現在選択中のカテゴリ
+let currentMode = "all";     // 出題モード: 'all' | 10 | 20 | 30 | 'weak'
+let weakSet = new Set();     // 苦手問題（haku をキーに保存）
+
+// LocalStorage から苦手セット読み込み
+try {
+  const saved = localStorage.getItem("kanbun_weak");
+  if (saved) weakSet = new Set(JSON.parse(saved));
+} catch(e) { /* ignore */ }
+
+function saveWeak() {
+  try { localStorage.setItem("kanbun_weak", JSON.stringify([...weakSet])); } catch(e) { /* ignore */ }
+}
+
+// フィルターボタン生成
 const cats = ["全て", ...new Set(ALL.map(c => c.cat))];
 const fw = document.getElementById("filterWrap");
 cats.forEach(cat => {
@@ -899,20 +1495,71 @@ cats.forEach(cat => {
 function setFilter(cat, btn) {
   document.querySelectorAll(".fbtn").forEach(b => b.classList.remove("on"));
   btn.classList.add("on");
-  cards = cat === "全て" ? [...ALL] : ALL.filter(c => c.cat === cat);
-  restart();
+  currentFilter = cat;
+  applyModeAndFilter();
 }
 
-// ===== Render =====
+function setMode(mode, btn) {
+  document.querySelectorAll(".mbtn").forEach(b => b.classList.remove("on"));
+  btn.classList.add("on");
+  currentMode = mode;
+  applyModeAndFilter();
+}
+
+// カテゴリフィルタ後、モードを適用してデッキを作る
+function applyModeAndFilter() {
+  // 1. カテゴリフィルタ
+  let pool = currentFilter === "全て" ? [...ALL] : ALL.filter(c => c.cat === currentFilter);
+
+  // 2. 苦手モードなら苦手のみ
+  if (currentMode === "weak") {
+    pool = pool.filter(c => weakSet.has(c.haku));
+    if (pool.length === 0) {
+      alert("苦手問題がまだありません。\n✗ 不正解を押すと苦手に登録されます。");
+      // モードを「全問」に戻す
+      document.querySelectorAll(".mbtn").forEach(b => b.classList.remove("on"));
+      document.getElementById("mAll").classList.add("on");
+      currentMode = "all";
+      pool = currentFilter === "全て" ? [...ALL] : ALL.filter(c => c.cat === currentFilter);
+    }
+  }
+
+  // 3. ランダムN問
+  if (typeof currentMode === "number") {
+    const n = Math.min(currentMode, pool.length);
+    pool = shuffle([...pool]).slice(0, n);
+  } else {
+    pool = shuffle([...pool]);
+  }
+
+  cards = pool;
+  idx = 0; correct = 0; answered = 0; wrongs = [];
+  document.getElementById("result").classList.remove("show");
+  updateWeakCount();
+  render();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function updateWeakCount() {
+  const n = weakSet.size;
+  document.getElementById("weakCount").textContent = n > 0 ? "(" + n + ")" : "";
+}
+
 function render() {
+  if (!cards.length) return;
   const c = cards[idx];
   flipped = false;
   document.getElementById("cardWrap").classList.remove("flipped");
-
   document.getElementById("fCat").textContent = c.cat;
   document.getElementById("fNum").textContent = (idx+1) + " / " + cards.length;
   document.getElementById("fHaku").textContent = c.haku;
-
   document.getElementById("bCat").textContent = c.cat;
   document.getElementById("bHaku").textContent = c.haku;
   document.getElementById("bKana").textContent = c.kana;
@@ -920,6 +1567,10 @@ function render() {
   document.getElementById("bKoho").textContent = c.koho;
   document.getElementById("bPat").textContent = c.pat;
   document.getElementById("bNote").textContent = c.note;
+
+  // 苦手バッジ表示
+  const badge = document.getElementById("fWeakBadge");
+  if (badge) badge.style.display = weakSet.has(c.haku) ? "block" : "none";
 
   document.getElementById("jok").classList.remove("show");
   document.getElementById("jng").classList.remove("show");
@@ -931,55 +1582,49 @@ function render() {
 
 function updateStats() {
   const t = cards.length;
-  const pct = t > 0 ? answered / t * 100 : 0;
   document.getElementById("sTxt").textContent = answered + " / " + t;
-  document.getElementById("pfill").style.width = pct + "%";
+  document.getElementById("pfill").style.width = (t > 0 ? answered / t * 100 : 0) + "%";
   document.getElementById("okTxt").textContent = "正解: " + correct;
 }
 
 function flipCard() {
   flipped = !flipped;
   document.getElementById("cardWrap").classList.toggle("flipped", flipped);
-  if (flipped) {
-    document.getElementById("jok").classList.add("show");
-    document.getElementById("jng").classList.add("show");
-  } else {
-    document.getElementById("jok").classList.remove("show");
-    document.getElementById("jng").classList.remove("show");
-  }
+  document.getElementById("jok").classList.toggle("show", flipped);
+  document.getElementById("jng").classList.toggle("show", flipped);
 }
 
-// ===== ○×オーバーレイ（しっかり表示） =====
 let overlayTimer = null;
 function showOverlay(ok) {
   const el = document.getElementById("overlay");
   const ch = document.getElementById("overlayChar");
-  // リセット
   el.classList.remove("show","ok","ng");
   ch.textContent = ok ? "○" : "✗";
-  // 強制リフロー
   void el.offsetWidth;
   el.classList.add("show", ok ? "ok" : "ng");
-
   if (overlayTimer) clearTimeout(overlayTimer);
-  overlayTimer = setTimeout(() => {
-    el.classList.remove("show","ok","ng");
-  }, 900);
+  overlayTimer = setTimeout(() => el.classList.remove("show","ok","ng"), 900);
 }
 
 function judge(ok) {
   if (!flipped) return;
   showOverlay(ok);
-  if (ok) correct++;
-  else wrongs.push(cards[idx]);
+  if (ok) {
+    correct++;
+    // 正解したら苦手から外す
+    weakSet.delete(cards[idx].haku);
+    saveWeak();
+  } else {
+    wrongs.push(cards[idx]);
+    // 不正解なら苦手に追加
+    weakSet.add(cards[idx].haku);
+    saveWeak();
+  }
+  updateWeakCount();
   answered++;
   updateStats();
-
   setTimeout(() => {
-    if (answered >= cards.length) {
-      showResult();
-      return;
-    }
+    if (answered >= cards.length) { showResult(); return; }
     if (idx < cards.length - 1) { idx++; render(); }
   }, 500);
 }
@@ -990,10 +1635,7 @@ function move(d) {
 }
 
 function doShuffle() {
-  for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [cards[i], cards[j]] = [cards[j], cards[i]];
-  }
+  cards = shuffle([...cards]);
   idx = 0; correct = 0; answered = 0; wrongs = [];
   render();
 }
@@ -1006,26 +1648,34 @@ function showResult() {
     pct >= 90 ? "完璧！句形完全マスター！" :
     pct >= 70 ? "よくできました！あと少し！" :
     pct >= 50 ? "半分以上！苦手句形を復習しよう" : "要復習。もう一度挑戦！";
-
   const wa = document.getElementById("wrongArea");
   if (wrongs.length > 0) {
-    wa.innerHTML = '<div class="wrong-hd">間違えた問題（' + wrongs.length + '問）</div>' +
-      wrongs.map(w =>
-        `<div class="wrong-item"><em>【${w.cat}】</em> ${w.haku}<br>→ ${w.imi}</div>`
-      ).join("");
+    var html = '<div class="wrong-hd">間違えた問題（' + wrongs.length + '問）</div>';
+    wrongs.forEach(function(w) {
+      html += '<div class="wrong-item"><em>【' + w.cat + '】</em> ' + w.haku + '<br>→ ' + w.imi + '</div>';
+    });
+    html += '<button class="rbtn rbtn-sub" style="margin-top:8px;background:#c8922a;" onclick="playWrongsOnly()">苦手のみ再挑戦</button>';
+    wa.innerHTML = html;
   } else {
     wa.innerHTML = '<div class="wrong-hd" style="color:#1a6a2a">全問正解！完璧です！</div>';
   }
 }
 
-function restart() {
+function playWrongsOnly() {
+  // 今セッションの間違えた問題だけでもう一度
+  cards = shuffle([...wrongs]);
   idx = 0; correct = 0; answered = 0; wrongs = [];
   document.getElementById("result").classList.remove("show");
   render();
 }
 
-render();
-</script>
+function restart() {
+  applyModeAndFilter();
+}
 
+// 初期化
+updateWeakCount();
+applyModeAndFilter();
+</script>
 </body>
 </html>
